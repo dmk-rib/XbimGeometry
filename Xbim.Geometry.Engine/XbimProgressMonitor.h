@@ -10,7 +10,7 @@
 #include <OSD_Timer.hxx>
 
 //DEFINE_STANDARD_HANDLE(XbimProgressIndicator, Message_ProgressIndicator)
-class XbimProgressMonitor : public Message_ProgressIndicator
+class XbimProgressMonitor : public Message_ProgressScope, public Message_ProgressRange
 {
 private:
 	OSD_Timer aTimer;
