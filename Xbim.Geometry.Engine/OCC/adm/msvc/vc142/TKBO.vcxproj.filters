@@ -2,40 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{298645A2-10C3-0F32-162D-B66C3A7B6834}</UniqueIdentifier>
+      <UniqueIdentifier>{E90DEB99-0F02-190A-0C45-1F2F7965E02F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{F64B67AD-05B7-06A8-12BF-F3C374A50BBA}</UniqueIdentifier>
+      <UniqueIdentifier>{612F6726-03AD-004B-1455-57A2576325EF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{A4FCE06D-1419-10C4-0B4A-78A2B9033808}</UniqueIdentifier>
+      <UniqueIdentifier>{4F9CC89B-0AFE-17FF-16F7-5FBDDDAA314A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{53A20C4B-1959-0738-0DEC-E4A16820F36A}</UniqueIdentifier>
+      <UniqueIdentifier>{8A2E233D-1813-18FC-0123-A71B65F7C3D2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPDS">
-      <UniqueIdentifier>{4CCB4B9B-08E0-0BBC-01BC-640EBD03AE7F}</UniqueIdentifier>
+      <UniqueIdentifier>{593049F7-0734-04B7-0DD3-076223BC0E50}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPAlgo">
-      <UniqueIdentifier>{B52130C9-147A-0CF8-13CA-24AC0699FA82}</UniqueIdentifier>
+      <UniqueIdentifier>{4FD01C2E-18C1-0EA7-0EF8-E0D22604D0BA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{0D9EDD83-0CFC-1174-03C6-09526700EE5D}</UniqueIdentifier>
+      <UniqueIdentifier>{239DD134-0B15-099D-1982-D49E15D67626}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\IntTools">
-      <UniqueIdentifier>{2138648F-12CF-138E-0CD7-269E90742E2D}</UniqueIdentifier>
+      <UniqueIdentifier>{E6E44D99-0B32-0CCC-1558-A01E973880A7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepAlgoAPI">
-      <UniqueIdentifier>{839B7665-17B6-0E0F-07F4-97630BE7A58A}</UniqueIdentifier>
+      <UniqueIdentifier>{867564C8-195A-075B-097A-E492BC5DA9ED}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BOPDS">
-      <UniqueIdentifier>{2528D399-00A1-0E57-0C9A-9B0B8711F0CB}</UniqueIdentifier>
+      <UniqueIdentifier>{3F2F5013-1846-07A5-1161-CF505FA5AC29}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BOPAlgo">
-      <UniqueIdentifier>{D7A9B84C-06DB-1896-141E-37FC699C7BAA}</UniqueIdentifier>
+      <UniqueIdentifier>{C9E015B9-1566-07ED-182A-37DDE2C82EE7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BOPTools">
-      <UniqueIdentifier>{7B03DC63-18A2-1389-03B7-2A685D29DD59}</UniqueIdentifier>
+      <UniqueIdentifier>{7F4BE3A4-079A-06F7-01BF-F46AC28D1F76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

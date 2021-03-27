@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <SignAssembly>false</SignAssembly>  
     <Platforms>x64;x86;AnyCPU</Platforms>
   </PropertyGroup>
@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NReco.Logging.File" Version="1.0.5" />
-    <PackageReference Include="Xbim.Essentials" Version="5.1.313-develop" />
+    <PackageReference Include="Xbim.Essentials" Version="5.1.327-develop" />
   </ItemGroup>
   <ItemGroup>   
     <ProjectReference Include="..\Xbim.ModelGeometry.Scene\Xbim.ModelGeometry.Scene.csproj" />

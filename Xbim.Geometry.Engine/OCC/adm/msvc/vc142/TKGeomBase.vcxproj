@@ -19,27 +19,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7CB3E890-16C1-1207-0238-0561EA5F61C4}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{FC33F99B-056C-0916-0689-D57F1B8BD3E3}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -90,7 +89,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -135,7 +134,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKGeomBase/</AssemblerListingLocation>
@@ -360,7 +359,6 @@
     <ClInclude Include="..\..\..\src\Approx\Approx_MCurvesToBSpCurve.hxx" />
     <ClInclude Include="..\..\..\src\Approx\Approx_ParametrizationType.hxx" />
     <ClInclude Include="..\..\..\src\Approx\Approx_SameParameter.hxx" />
-    <ClInclude Include="..\..\..\src\Approx\Approx_SameParameter.lxx" />
     <ClInclude Include="..\..\..\src\Approx\Approx_SequenceOfHArray1OfReal.hxx" />
     <ClInclude Include="..\..\..\src\Approx\Approx_Status.hxx" />
     <ClInclude Include="..\..\..\src\Approx\Approx_SweepApproximation.hxx" />
@@ -467,7 +465,9 @@
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtPS.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtSS.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCC.cxx" />
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCQuadric.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCS.cxx" />
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_GlobOptFuncConicS.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_LocECC2d_0.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_LocECC_0.cxx" />
     <ClCompile Include="..\..\..\src\Extrema\Extrema_LocEPCOfLocateExtPC2d_0.cxx" />
@@ -545,7 +545,9 @@
     <ClInclude Include="..\..\..\src\Extrema\Extrema_GenLocateExtPS.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_GenLocateExtSS.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCC.hxx" />
+    <ClInclude Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCQuadric.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_GlobOptFuncCS.hxx" />
+    <ClInclude Include="..\..\..\src\Extrema\Extrema_GlobOptFuncConicS.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_HArray1OfPOnCurv.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_HArray1OfPOnCurv2d.hxx" />
     <ClInclude Include="..\..\..\src\Extrema\Extrema_HArray1OfPOnSurf.hxx" />
@@ -671,11 +673,9 @@
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Data_f2c.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_EvaluatorFunc2Var.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Framework.hxx" />
-    <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Framework.lxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Iso.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_MathBase.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Network.hxx" />
-    <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Network.lxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Node.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_Patch.hxx" />
     <ClInclude Include="..\..\..\src\AdvApp2Var\AdvApp2Var_SequenceOfNode.hxx" />
@@ -923,6 +923,7 @@
     <ClInclude Include="..\..\..\src\gce\gce_MakeTranslation2d.hxx" />
     <ClInclude Include="..\..\..\src\gce\gce_Root.hxx" />
     <ClInclude Include="..\..\..\src\gce\gce_Root.lxx" />
+
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TKGeomBase.rc" />
@@ -931,3 +932,4 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
+

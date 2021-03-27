@@ -2,34 +2,34 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9F579F73-0C52-16CF-0E28-379355A9D90D}</UniqueIdentifier>
+      <UniqueIdentifier>{2866A7E6-0B19-1658-120F-CFDD34C392C6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{E923E893-0DB8-183E-13EC-E86AF7C6ADC8}</UniqueIdentifier>
+      <UniqueIdentifier>{D9452814-0533-04A1-0F66-BCBD362A40D0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffsetAPI">
-      <UniqueIdentifier>{BB35410A-0A0E-06B9-1451-A1302E623700}</UniqueIdentifier>
+      <UniqueIdentifier>{053CB39D-0EC0-0359-0134-E0DE010F2CB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draft">
-      <UniqueIdentifier>{09030C7A-0954-0388-0E40-1A02197FE47F}</UniqueIdentifier>
+      <UniqueIdentifier>{41232646-0AD2-0314-0B94-318894FDD944}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffset">
-      <UniqueIdentifier>{7257D96E-0B75-0AF7-1910-BDAE860D149F}</UniqueIdentifier>
+      <UniqueIdentifier>{C33B5D86-0419-0E7E-0E62-8B7084880408}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BiTgte">
-      <UniqueIdentifier>{C4FEDBE3-0FEA-197A-10E7-58FA6CA0F1AA}</UniqueIdentifier>
+      <UniqueIdentifier>{C0DABB05-10E3-0B17-174A-04E280B267FA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepOffsetAPI">
-      <UniqueIdentifier>{59D0BBD9-0DF9-113D-16AD-DEDC013DD0DE}</UniqueIdentifier>
+      <UniqueIdentifier>{C8658638-0853-15F7-0318-C998863CBFC6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Draft">
-      <UniqueIdentifier>{5BCD1B2F-0FA9-0736-06D8-1E9444983039}</UniqueIdentifier>
+      <UniqueIdentifier>{5296A772-03F2-1135-0B1D-AB69117F18FB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepOffset">
-      <UniqueIdentifier>{860C3CB8-0ACF-0A50-1686-20A45D06FBB0}</UniqueIdentifier>
+      <UniqueIdentifier>{412647C3-0A82-11B2-053C-EA5AA0E3EE8B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BiTgte">
-      <UniqueIdentifier>{75F2CDD9-14BD-0948-1669-04042CADEBE4}</UniqueIdentifier>
+      <UniqueIdentifier>{420B02AE-16E0-0B81-0EB1-8C4735970C3E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -288,9 +288,6 @@
       <Filter>Header files\BRepOffset</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\BRepOffset\BRepOffset_Tool.hxx">
-      <Filter>Header files\BRepOffset</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\BRepOffset\BRepOffset_Type.hxx">
       <Filter>Header files\BRepOffset</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\BiTgte\BiTgte_Blend.hxx">

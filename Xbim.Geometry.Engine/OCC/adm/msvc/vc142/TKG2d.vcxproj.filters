@@ -2,49 +2,49 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{71899BF0-0C1C-0CD7-1733-DBC6F4E2C862}</UniqueIdentifier>
+      <UniqueIdentifier>{BF8C0D88-05CC-0572-101A-90A6C2B42CB2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{D1A213EE-1798-0475-1000-96762D28C0AA}</UniqueIdentifier>
+      <UniqueIdentifier>{E26DF7FA-0632-0696-0375-77FB701C9283}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2d">
-      <UniqueIdentifier>{810ED5EF-18D5-03AB-191E-E9D49C85556A}</UniqueIdentifier>
+      <UniqueIdentifier>{D6EA0139-0286-10C2-0FDC-804EDFBA470B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LProp">
-      <UniqueIdentifier>{AAAF3D0D-0BE4-0D83-10A5-F9875E263921}</UniqueIdentifier>
+      <UniqueIdentifier>{8E5D81F9-0AEC-152F-01E6-2FB54024B6CD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Adaptor2d">
-      <UniqueIdentifier>{70B91828-0516-13DD-16B6-A3234660F496}</UniqueIdentifier>
+      <UniqueIdentifier>{5D87C9D7-0C69-08C9-16FF-5D94ACCBAB77}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dLProp">
-      <UniqueIdentifier>{59C97CFB-04CC-0215-167B-9BF4A8DB4DB3}</UniqueIdentifier>
+      <UniqueIdentifier>{6647E47F-15BA-02DB-0388-1582DA41D276}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dAdaptor">
-      <UniqueIdentifier>{CA645928-10F6-14FA-0756-AFF3A8A5ADEC}</UniqueIdentifier>
+      <UniqueIdentifier>{6074E989-0187-0DAC-0A53-94BA625882FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Geom2dEvaluator">
-      <UniqueIdentifier>{3D832316-0910-1371-0395-AAA81A025020}</UniqueIdentifier>
+      <UniqueIdentifier>{006025EA-0849-0068-17CF-CD87516EEA3A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Geom2d">
-      <UniqueIdentifier>{DA6E9FF9-00D7-0C39-11F8-F35F20EA4A0F}</UniqueIdentifier>
+      <UniqueIdentifier>{D3B331B9-111D-12FF-18E6-D560E6CCD6F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\LProp">
-      <UniqueIdentifier>{A43134D9-057E-1936-1782-51CE49BE595C}</UniqueIdentifier>
+      <UniqueIdentifier>{333241C2-1552-1519-132F-AE5317D11205}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TColGeom2d">
-      <UniqueIdentifier>{DCAF9A88-1494-03AE-01C5-A0B0F6C213EF}</UniqueIdentifier>
+      <UniqueIdentifier>{F61EC985-00CD-0F9D-0C4D-44A160BEDA97}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Adaptor2d">
-      <UniqueIdentifier>{AABF2C6E-060E-0A52-0A55-B7250AE0C761}</UniqueIdentifier>
+      <UniqueIdentifier>{0115D774-019C-0F5F-16F9-271C7DBF6285}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Geom2dLProp">
-      <UniqueIdentifier>{41D31118-0F96-0087-0889-1710883E6D7C}</UniqueIdentifier>
+      <UniqueIdentifier>{DD2AF8A3-0AB3-131E-0E74-B58F18C5AE91}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Geom2dAdaptor">
-      <UniqueIdentifier>{86227CC4-0B41-0B55-0E70-ECE705330BB0}</UniqueIdentifier>
+      <UniqueIdentifier>{47DE9BE6-151A-09FD-1197-B5CCC195CC33}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Geom2dEvaluator">
-      <UniqueIdentifier>{445B32EB-1214-0DD5-1431-D15C6408D7D0}</UniqueIdentifier>
+      <UniqueIdentifier>{912CAC40-02FE-03AE-0994-FE30350EFA09}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dAdaptor\Geom2dAdaptor_HCurve.cxx">
       <Filter>Source files\Geom2dAdaptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Geom2dEvaluator\Geom2dEvaluator.cxx">
+      <Filter>Source files\Geom2dEvaluator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Geom2dEvaluator\Geom2dEvaluator_OffsetCurve.cxx">
       <Filter>Source files\Geom2dEvaluator</Filter>
@@ -358,6 +361,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Geom2dAdaptor\Geom2dAdaptor_HCurve.hxx">
       <Filter>Header files\Geom2dAdaptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Geom2dEvaluator\Geom2dEvaluator.hxx">
+      <Filter>Header files\Geom2dEvaluator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Geom2dEvaluator\Geom2dEvaluator_Curve.hxx">
       <Filter>Header files\Geom2dEvaluator</Filter>

@@ -19,27 +19,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{204C0C86-0089-1439-18C2-F3FAD4D88118}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{301A2340-0C69-0557-09A5-27ADD204CA96}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -90,7 +89,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -135,7 +134,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKMesh/</AssemblerListingLocation>
@@ -257,6 +256,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Curve.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Edge.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Face.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Model.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_PCurve.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_ParametersList.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Shape.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_TessellatedShape.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshData\IMeshData_Wire.cxx" />
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_Curve.hxx" />
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_Edge.hxx" />
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_Face.hxx" />
@@ -270,12 +278,20 @@
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_TessellatedShape.hxx" />
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_Types.hxx" />
     <ClInclude Include="..\..\..\src\IMeshData\IMeshData_Wire.hxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_Context.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_CurveTessellator.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_MeshAlgo.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_MeshAlgoFactory.cxx" />
     <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_MeshBuilder.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_ModelAlgo.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_ModelBuilder.cxx" />
     <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_ShapeExplorer.cxx" />
+    <ClCompile Include="..\..\..\src\IMeshTools\IMeshTools_ShapeVisitor.cxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_Context.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_CurveTessellator.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_MeshAlgo.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_MeshAlgoFactory.hxx" />
+    <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_MeshAlgoType.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_MeshBuilder.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_ModelAlgo.hxx" />
     <ClInclude Include="..\..\..\src\IMeshTools\IMeshTools_ModelBuilder.hxx" />
@@ -298,12 +314,16 @@
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CircleTool.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Classifier.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ConeRangeSplitter.cxx" />
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_ConstrainedBaseMeshAlgo.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Context.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CurveTessellator.cxx" />
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CustomBaseMeshAlgo.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_CylinderRangeSplitter.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DataStructureOfDelaun.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DefaultRangeSplitter.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Deflection.cxx" />
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DelabellaBaseMeshAlgo.cxx" />
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DelabellaMeshAlgoFactory.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Delaun.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DelaunayBaseMeshAlgo.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_DiscretFactory.cxx" />
@@ -327,6 +347,7 @@
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_SphereRangeSplitter.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_TorusRangeSplitter.cxx" />
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx" />
+    <ClCompile Include="..\..\..\src\BRepMesh\delabella.cpp" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_BaseMeshAlgo.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_BoundaryParamsRangeSplitter.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_Circle.hxx" />
@@ -344,6 +365,8 @@
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DefaultRangeSplitter.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_Deflection.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DegreeOfFreedom.hxx" />
+    <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DelabellaBaseMeshAlgo.hxx" />
+    <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DelabellaMeshAlgoFactory.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_Delaun.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DelaunayBaseMeshAlgo.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_DelaunayDeflectionControlMeshAlgo.hxx" />
@@ -382,6 +405,8 @@
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_Vertex.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_VertexInspector.hxx" />
     <ClInclude Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.hxx" />
+    <ClInclude Include="..\..\..\src\BRepMesh\delabella.pxx" />
+
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TKMesh.rc" />
@@ -390,3 +415,4 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
+

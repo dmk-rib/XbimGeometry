@@ -2,61 +2,64 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{DA2DE04F-072B-0005-0F48-B1CEC77E7361}</UniqueIdentifier>
+      <UniqueIdentifier>{609B2976-0EBE-0EC3-1263-0DA6A8389B1E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{C8EA2598-05A0-0250-080E-64E92C087EC9}</UniqueIdentifier>
+      <UniqueIdentifier>{4FE54075-018D-014D-17C8-B37B9B781824}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDS">
-      <UniqueIdentifier>{BBD5BB5C-15BC-0E61-1814-6489D895DD3D}</UniqueIdentifier>
+      <UniqueIdentifier>{791EB5AC-000A-0652-109E-81F866DAFB0E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopExp">
-      <UniqueIdentifier>{EFF06809-0864-0662-1492-D4F9C2594AA7}</UniqueIdentifier>
+      <UniqueIdentifier>{9885CF97-0C82-0067-182E-6725ABDA1038}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTools">
-      <UniqueIdentifier>{341F3FDE-0120-18C0-04C2-829EAC7F4171}</UniqueIdentifier>
+      <UniqueIdentifier>{5F05E6A7-0752-0B00-104F-FA0CB357D359}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRep">
-      <UniqueIdentifier>{A17368A9-1163-10E7-0A79-590986805BE1}</UniqueIdentifier>
+      <UniqueIdentifier>{F4B75282-06C3-14C1-0AEB-AEB8B3E02A14}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLProp">
-      <UniqueIdentifier>{10217290-17D4-090D-0636-E9337230C16F}</UniqueIdentifier>
+      <UniqueIdentifier>{EA8A0F70-0090-0EEE-163E-B74161255C29}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAdaptor">
-      <UniqueIdentifier>{EB782731-0E5F-0E76-007E-66FF1AF63EA3}</UniqueIdentifier>
+      <UniqueIdentifier>{C5939E25-09DD-015E-00CA-B25381884234}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTools">
-      <UniqueIdentifier>{8A643DEB-121B-0EFC-092F-4B759614EE64}</UniqueIdentifier>
+      <UniqueIdentifier>{B2663F15-0EBC-07B9-16A2-0A0D3DEB495B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinTools">
-      <UniqueIdentifier>{2F16FA18-129A-0018-13BA-14F65A39A23E}</UniqueIdentifier>
+      <UniqueIdentifier>{1D2C33F4-0E7B-0AAF-07A9-D3FEEB050ABA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopoDS">
-      <UniqueIdentifier>{CAAA1A56-0231-06B7-0F87-E26ACDD1D14A}</UniqueIdentifier>
+      <UniqueIdentifier>{0361DDA0-03D0-020C-17B6-BC1AF58DE3D2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopExp">
-      <UniqueIdentifier>{036EEDF6-0171-01DC-0333-89844149FAF8}</UniqueIdentifier>
+      <UniqueIdentifier>{67F6F1B8-11DB-109F-0852-BE93B7D3F289}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopTools">
-      <UniqueIdentifier>{FBAFEDFD-152B-09A5-0F2C-63749C7CCC39}</UniqueIdentifier>
+      <UniqueIdentifier>{D8025598-0B2D-136A-06CC-2AB69037BB83}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRep">
-      <UniqueIdentifier>{43F30F60-0821-093D-10D7-702940A445B2}</UniqueIdentifier>
+      <UniqueIdentifier>{F7B55E7A-168B-024F-0E6C-E992518530EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepLProp">
-      <UniqueIdentifier>{DBCFEA12-0C02-1377-0F96-6C034C4C8648}</UniqueIdentifier>
+      <UniqueIdentifier>{4F6D8739-13A5-0DE7-05B1-F4266F074269}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepAdaptor">
-      <UniqueIdentifier>{04213C52-05EC-05B7-09DF-41AB605A43DD}</UniqueIdentifier>
+      <UniqueIdentifier>{991E6379-05F9-12FB-0CC5-94872C3691E8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepTools">
-      <UniqueIdentifier>{1D625942-0918-0A5C-1565-90FA55231791}</UniqueIdentifier>
+      <UniqueIdentifier>{A530193F-01D9-15CC-0454-502D8DDE88C1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BinTools">
-      <UniqueIdentifier>{E06162F1-0303-0069-02B6-B6A8B1FD16FD}</UniqueIdentifier>
+      <UniqueIdentifier>{E46FC4A6-0670-05CC-13B7-1BCEA19AAFAC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\TopoDS\TopoDS_AlertAttribute.cxx">
+      <Filter>Source files\TopoDS</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\TopoDS\TopoDS_AlertWithShape.cxx">
       <Filter>Source files\TopoDS</Filter>
     </ClCompile>
@@ -282,6 +285,9 @@
       <Filter>Header files\TopoDS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\TopoDS\TopoDS.lxx">
+      <Filter>Header files\TopoDS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\TopoDS\TopoDS_AlertAttribute.hxx">
       <Filter>Header files\TopoDS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\TopoDS\TopoDS_AlertWithShape.hxx">

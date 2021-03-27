@@ -2,58 +2,58 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{FB17B3FD-022B-110A-02A8-5CB4A858ABD6}</UniqueIdentifier>
+      <UniqueIdentifier>{9D215C2F-093F-0BB5-1371-4BF70345FD30}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{7991A834-05FC-067D-0612-9589C086D05A}</UniqueIdentifier>
+      <UniqueIdentifier>{F186901B-17F3-15E4-1169-4C9BA07D4761}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTopoBRep">
-      <UniqueIdentifier>{D8E3C165-087B-0717-1644-1C25A9ECAA84}</UniqueIdentifier>
+      <UniqueIdentifier>{D94BAFCF-0A1F-027A-105E-3487469D238B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRBRep">
-      <UniqueIdentifier>{AEC53321-00E4-11E5-1002-5DEC7B509DB0}</UniqueIdentifier>
+      <UniqueIdentifier>{88895A2F-01A3-15A4-0165-8E0AA45CB304}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAlgo">
-      <UniqueIdentifier>{A097B824-118F-1755-1047-9DBCC9D54A98}</UniqueIdentifier>
+      <UniqueIdentifier>{ECEE28F0-0F9E-0843-11C5-B525C4C2888F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAppli">
-      <UniqueIdentifier>{145E4E73-0D26-00A3-0031-296A34FBB780}</UniqueIdentifier>
+      <UniqueIdentifier>{9393598A-0539-0CF8-10E8-B5ED8CFEA50E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intrv">
-      <UniqueIdentifier>{CC5AF5A6-14D6-142B-0B6C-55701A32E21C}</UniqueIdentifier>
+      <UniqueIdentifier>{0669D4A0-0092-01A9-0D62-2F8DED0F0146}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopBas">
-      <UniqueIdentifier>{9ADC7B20-10FB-043E-0D9C-5E53B7CA21ED}</UniqueIdentifier>
+      <UniqueIdentifier>{1CBF9FA6-0192-019D-0824-39BED51FBC1F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopCnx">
-      <UniqueIdentifier>{798A8207-145C-1695-0C4E-EECBAC7DA1C9}</UniqueIdentifier>
+      <UniqueIdentifier>{77BEC7B8-12A0-080E-0FB5-9A70AE5BC248}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Contap">
-      <UniqueIdentifier>{08C7B086-0820-0810-0D67-12877D7D5676}</UniqueIdentifier>
+      <UniqueIdentifier>{3010F31A-0B02-13EE-11F2-EE6AF9B12D82}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\HLRTopoBRep">
-      <UniqueIdentifier>{B763E53F-166E-05F1-05CA-442C08A6DD90}</UniqueIdentifier>
+      <UniqueIdentifier>{22BDF4EE-0F23-1911-003C-68485163D72E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\HLRBRep">
-      <UniqueIdentifier>{1C48759D-0672-01C5-011A-B32F27DCA9CC}</UniqueIdentifier>
+      <UniqueIdentifier>{C4286453-0AF3-0C30-13A3-01FAF1021261}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\HLRAlgo">
-      <UniqueIdentifier>{0FCB813F-0CD7-0DB1-0550-22D8E5CDCC00}</UniqueIdentifier>
+      <UniqueIdentifier>{04BB0129-1383-0C0A-0F36-CE69A178D74A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\HLRAppli">
-      <UniqueIdentifier>{0C3850E4-002F-146E-0170-002F4A20D89D}</UniqueIdentifier>
+      <UniqueIdentifier>{7E41ABA0-0A3F-1873-01D2-344FE368E72A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Intrv">
-      <UniqueIdentifier>{6D5EC656-06D2-0C02-177E-B978B9A4BDA5}</UniqueIdentifier>
+      <UniqueIdentifier>{20B73C3D-13C5-125F-170F-78145C80BF70}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopBas">
-      <UniqueIdentifier>{9EACE486-0B03-0035-12A2-6E819EFFB816}</UniqueIdentifier>
+      <UniqueIdentifier>{988288AA-05C0-1005-0056-EC28F073C9F7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopCnx">
-      <UniqueIdentifier>{8ED97CA6-10F1-0CB9-0DE2-5333DA715562}</UniqueIdentifier>
+      <UniqueIdentifier>{D07B76D5-145B-18F2-1853-15E705F235D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Contap">
-      <UniqueIdentifier>{9CB1E136-0383-13B9-0AA0-E7F9068E2A1A}</UniqueIdentifier>
+      <UniqueIdentifier>{ABFD9439-0300-036E-14BA-46D9AE7D6795}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -525,9 +525,6 @@
       <Filter>Header files\HLRBRep</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\HLRBRep\HLRBRep_PolyAlgo.hxx">
-      <Filter>Header files\HLRBRep</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\HLRBRep\HLRBRep_PolyAlgo.lxx">
       <Filter>Header files\HLRBRep</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\HLRBRep\HLRBRep_PolyHLRToShape.hxx">

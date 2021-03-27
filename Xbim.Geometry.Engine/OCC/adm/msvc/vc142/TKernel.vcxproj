@@ -19,27 +19,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8DD8EAF9-148D-030E-0C02-C58C5E827B83}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{7DBAF637-0EE7-0DFB-0E24-A1197C905CD7}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -90,7 +89,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -135,7 +134,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DHAVE_NO_DLL;OCCT_STATIC_BUILD;HAVE_NO_DLL;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKernel/</AssemblerListingLocation>
@@ -389,10 +388,10 @@
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Coefficient.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_CoefficientOfExpansion.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Color.hxx" />
-    <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorDefinitionError.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorHasher.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorRGBA.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorRGBAHasher.hxx" />
+    <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorTable.pxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Concentration.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Conductivity.hxx" />
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Constant.hxx" />
@@ -473,19 +472,18 @@
     <ClCompile Include="..\..\..\src\Resource\Resource_LexicalCompare.cxx" />
     <ClCompile Include="..\..\..\src\Resource\Resource_Manager.cxx" />
     <ClCompile Include="..\..\..\src\Resource\Resource_Unicode.cxx" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_Big5.h" />
+    <ClInclude Include="..\..\..\src\Resource\Resource_Big5.pxx" />
+    <ClInclude Include="..\..\..\src\Resource\Resource_CodePages.pxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_ConvertUnicode.hxx" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_DataMapOfAsciiStringAsciiString.hxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_DataMapOfAsciiStringExtendedString.hxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_FormatType.hxx" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_GB2312.h" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_GBK.h" />
+    <ClInclude Include="..\..\..\src\Resource\Resource_GB2312.pxx" />
+    <ClInclude Include="..\..\..\src\Resource\Resource_GBK.pxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_LexicalCompare.hxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_Manager.hxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_NoSuchResource.hxx" />
-    <ClInclude Include="..\..\..\src\Resource\Resource_Shiftjis.h" />
+    <ClInclude Include="..\..\..\src\Resource\Resource_Shiftjis.pxx" />
     <ClInclude Include="..\..\..\src\Resource\Resource_Unicode.hxx" />
     <ClCompile Include="..\..\..\src\Standard\Standard.cxx" />
     <ClCompile Include="..\..\..\src\Standard\Standard_ArrayStreamBuffer.cxx" />
@@ -588,6 +586,7 @@
     <ClInclude Include="..\..\..\src\Standard\Standard_UUID.hxx" />
     <ClInclude Include="..\..\..\src\Standard\Standard_Underflow.hxx" />
     <ClInclude Include="..\..\..\src\Standard\Standard_Version.hxx" />
+    <ClInclude Include="..\..\..\src\Standard\Standard_WarningDisableFunctionCast.hxx" />
     <ClInclude Include="..\..\..\src\Standard\Standard_WarningsDisable.hxx" />
     <ClInclude Include="..\..\..\src\Standard\Standard_WarningsRestore.hxx" />
     <ClInclude Include="..\..\..\src\Standard\Standard_math.hxx" />
@@ -613,7 +612,6 @@
     <ClInclude Include="..\..\..\src\Storage\Storage_ArrayOfCallBack.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_ArrayOfSchema.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_BaseDriver.hxx" />
-    <ClInclude Include="..\..\..\src\Storage\Storage_BaseDriver.lxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_BucketOfPersistent.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_CallBack.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_Data.hxx" />
@@ -637,7 +635,6 @@
     <ClInclude Include="..\..\..\src\Storage\Storage_Root.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_RootData.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_Schema.hxx" />
-    <ClInclude Include="..\..\..\src\Storage\Storage_Schema.lxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_SeqOfRoot.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_SolveMode.hxx" />
     <ClInclude Include="..\..\..\src\Storage\Storage_StreamExtCharParityError.hxx" />
@@ -888,7 +885,6 @@
     <ClInclude Include="..\..\..\src\NCollection\NCollection_BaseVector.hxx" />
     <ClInclude Include="..\..\..\src\NCollection\NCollection_Buffer.hxx" />
     <ClInclude Include="..\..\..\src\NCollection\NCollection_CellFilter.hxx" />
-    <ClInclude Include="..\..\..\src\NCollection\NCollection_Comparator.hxx" />
     <ClInclude Include="..\..\..\src\NCollection\NCollection_DataMap.hxx" />
     <ClInclude Include="..\..\..\src\NCollection\NCollection_DefaultHasher.hxx" />
     <ClInclude Include="..\..\..\src\NCollection\NCollection_DefineAlloc.hxx" />
@@ -945,43 +941,59 @@
     <ClInclude Include="..\..\..\src\NCollection\NCollection_WinHeapAllocator.hxx" />
     <ClCompile Include="..\..\..\src\Message\Message.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Alert.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_AlertExtended.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Algorithm.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_Attribute.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeMeter.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeObject.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeStream.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_CompositeAlerts.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_Level.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Messenger.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Msg.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_MsgFile.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Printer.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_PrinterOStream.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_PrinterSystemLog.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_PrinterToReport.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_ProgressIndicator.cxx" />
-    <ClCompile Include="..\..\..\src\Message\Message_ProgressScale.cxx" />
-    <ClCompile Include="..\..\..\src\Message\Message_ProgressSentry.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_Report.cxx" />
     <ClInclude Include="..\..\..\src\Message\Message.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Alert.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_AlertExtended.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Algorithm.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Algorithm.lxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_Attribute.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeMeter.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeObject.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeStream.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_CompositeAlerts.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_ConsoleColor.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ExecStatus.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Gravity.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_HArrayOfMsg.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_Level.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ListIteratorOfListOfMsg.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ListOfAlert.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ListOfMsg.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Messenger.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_MetricType.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Msg.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Msg.lxx" />
     <ClInclude Include="..\..\..\src\Message\Message_MsgFile.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Printer.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_PrinterOStream.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_PrinterSystemLog.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_PrinterToReport.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ProgressIndicator.hxx" />
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressIndicator.lxx" />
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressScale.hxx" />
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressScale.lxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_ProgressRange.hxx" />
+    <ClInclude Include="..\..\..\src\Message\Message_ProgressScope.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_ProgressSentry.hxx" />
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressSentry.lxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Report.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_SequenceOfPrinters.hxx" />
-    <ClInclude Include="..\..\..\src\Message\Message_SequenceOfProgressScale.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Status.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_StatusType.hxx" />
+
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TKernel.rc" />
@@ -990,3 +1002,4 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
+

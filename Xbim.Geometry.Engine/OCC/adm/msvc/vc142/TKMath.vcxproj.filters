@@ -2,109 +2,109 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D6BF5C3A-08F4-1753-17DB-599D5D6A6ACD}</UniqueIdentifier>
+      <UniqueIdentifier>{8702FF5D-01A1-16ED-1794-4C9A793183BA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{89DA4865-17D4-0A75-0C23-36CA511CA722}</UniqueIdentifier>
+      <UniqueIdentifier>{BF527E6C-0DD5-0CDE-11DC-3688EF5834C5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\math">
-      <UniqueIdentifier>{20B9A677-03CC-07B8-1057-89835A0E9D7A}</UniqueIdentifier>
+      <UniqueIdentifier>{F0940DA8-17D2-0300-028E-35E2B1B5DB4A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElCLib">
-      <UniqueIdentifier>{84BBCBC4-00A8-0C5F-1548-74DE78B9D693}</UniqueIdentifier>
+      <UniqueIdentifier>{500CFAF8-0CE3-0BC3-0173-79B9477324AC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElSLib">
-      <UniqueIdentifier>{B68218B1-03E0-0165-03FE-1105C892CD1A}</UniqueIdentifier>
+      <UniqueIdentifier>{6CBA4923-0A4E-11C6-0041-C3DD5FFAA17F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplCLib">
-      <UniqueIdentifier>{D7879810-0986-0400-01EA-500023393476}</UniqueIdentifier>
+      <UniqueIdentifier>{80B27B74-0CDB-0A57-10B0-3FD1B8E1A04A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplSLib">
-      <UniqueIdentifier>{A3615B34-07D6-0846-0BEB-A33E3B4AA9DE}</UniqueIdentifier>
+      <UniqueIdentifier>{E285CF5B-1917-13F3-0DE0-162488B88D7D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PLib">
-      <UniqueIdentifier>{D6645695-0AEF-1794-0BDB-75C7C58E94CF}</UniqueIdentifier>
+      <UniqueIdentifier>{511D6736-02E1-013E-0A99-136D70760C85}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Poly">
-      <UniqueIdentifier>{CBB445CA-115E-00CC-08C9-BF9FBA8F9AE1}</UniqueIdentifier>
+      <UniqueIdentifier>{300F4923-194D-048F-027E-76273A098A01}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CSLib">
-      <UniqueIdentifier>{01583A14-0168-0B2E-1854-2EDD2EBB25C6}</UniqueIdentifier>
+      <UniqueIdentifier>{43635E53-0902-0D68-0C27-D3A5C728C9FD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Convert">
-      <UniqueIdentifier>{AD1C4A81-0A3C-076E-001C-6A4AC452B735}</UniqueIdentifier>
+      <UniqueIdentifier>{E50FFFC7-0473-0A8B-01A3-2FBB97C4F112}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bnd">
-      <UniqueIdentifier>{7A0E4833-01DC-0115-10E2-249FB370B1C4}</UniqueIdentifier>
+      <UniqueIdentifier>{AEE2FC3B-1358-01E2-0EBA-A63B7E8BD32B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BVH">
-      <UniqueIdentifier>{A6F1F765-067D-114A-017E-8A30EF92A802}</UniqueIdentifier>
+      <UniqueIdentifier>{D4D4567C-0C83-06CB-00DF-446298A4FD4B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gp">
-      <UniqueIdentifier>{543BE962-10DA-0CF7-1514-9C71D9F6803C}</UniqueIdentifier>
+      <UniqueIdentifier>{F185D4C8-0829-059D-0DEA-34695DF16077}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopLoc">
-      <UniqueIdentifier>{5D0E34B4-0B34-09CD-018D-91B1FE3CADF7}</UniqueIdentifier>
+      <UniqueIdentifier>{F4425922-06C5-1550-0491-329A6C383B04}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Expr">
-      <UniqueIdentifier>{C1334010-019F-15D6-0EAF-63884587A532}</UniqueIdentifier>
+      <UniqueIdentifier>{AAC03EC3-0CD1-010D-0C87-2A24BCD1C844}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ExprIntrp">
-      <UniqueIdentifier>{6E7B87E7-0ADC-1047-1178-57ED4399FA18}</UniqueIdentifier>
+      <UniqueIdentifier>{B303737A-16E5-02C6-1591-97150CE6D1E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\math">
-      <UniqueIdentifier>{F26E2D91-04D2-08BF-189A-8A925F8FA78F}</UniqueIdentifier>
+      <UniqueIdentifier>{DE8D75D1-0417-0E73-189E-666F1B087207}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ElCLib">
-      <UniqueIdentifier>{41B6B494-007E-069E-0CDA-1EC1D146956E}</UniqueIdentifier>
+      <UniqueIdentifier>{763D12EA-0D17-0328-0A49-30EDD04D2406}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ElSLib">
-      <UniqueIdentifier>{FC7A568C-136A-0202-18F7-79B08433E4D3}</UniqueIdentifier>
+      <UniqueIdentifier>{781CA2FA-0913-171E-113B-C87FE7454334}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BSplCLib">
-      <UniqueIdentifier>{F3E27E69-01D0-05E5-0DDE-8CD427BC6036}</UniqueIdentifier>
+      <UniqueIdentifier>{3F0DA009-0070-11C8-18D8-B63794FB059C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BSplSLib">
-      <UniqueIdentifier>{50AE6F0E-07C6-046D-00FA-13E95F3E7732}</UniqueIdentifier>
+      <UniqueIdentifier>{2D791286-031B-0D2F-112F-DF992DC17580}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\PLib">
-      <UniqueIdentifier>{038B560B-1255-0A22-036E-99D71BF93DD2}</UniqueIdentifier>
+      <UniqueIdentifier>{092F9B61-15A8-16BE-04F8-16111EBDFAE1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Precision">
-      <UniqueIdentifier>{49BD0F31-1722-16CA-1760-220E23CE4802}</UniqueIdentifier>
+      <UniqueIdentifier>{A1D5712C-0FDA-0B43-196E-506070EB6067}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\GeomAbs">
-      <UniqueIdentifier>{D9A750B7-0CC9-1934-0844-4FADA51142E0}</UniqueIdentifier>
+      <UniqueIdentifier>{062A769C-0BBE-14DF-1142-2BE2220B3CD5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Poly">
-      <UniqueIdentifier>{3DA61D66-10B2-07FB-1723-E6BD0984B377}</UniqueIdentifier>
+      <UniqueIdentifier>{C6FFFB6C-027F-18E4-0822-33A24BE415A0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\CSLib">
-      <UniqueIdentifier>{225BD8BB-18B0-0F98-099F-1079288231A3}</UniqueIdentifier>
+      <UniqueIdentifier>{47D4739C-04B1-1916-1862-0FA7FCDDCF7B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Convert">
-      <UniqueIdentifier>{88F5D50C-03DC-0503-056C-EF3B421B96A4}</UniqueIdentifier>
+      <UniqueIdentifier>{60CF278C-038F-1386-11B9-0182360BAC5B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Bnd">
-      <UniqueIdentifier>{3F248977-0E61-1442-1815-1998D3806816}</UniqueIdentifier>
+      <UniqueIdentifier>{60C03DFE-0310-0D1B-0D38-0652E42C028B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BVH">
-      <UniqueIdentifier>{31865AA6-061D-0B5B-056C-BD2F4E6CE438}</UniqueIdentifier>
+      <UniqueIdentifier>{5B042D56-1186-0983-174A-D9B433C5B505}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\gp">
-      <UniqueIdentifier>{FB3702DD-0E90-0A84-14D4-BCFC595B4E84}</UniqueIdentifier>
+      <UniqueIdentifier>{EF8BDF0C-0A14-1797-0651-7A00C2C7E430}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TColgp">
-      <UniqueIdentifier>{7FE659DE-12D6-1370-103A-5221580B5287}</UniqueIdentifier>
+      <UniqueIdentifier>{5632B1A1-0212-1071-125E-6AFC05C7DCB0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopLoc">
-      <UniqueIdentifier>{57418178-05E4-1365-0B12-D7B77B4F2180}</UniqueIdentifier>
+      <UniqueIdentifier>{69C88D5E-053F-12F4-1917-998794940E0F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Expr">
-      <UniqueIdentifier>{205C3288-0EE8-0E90-0A0E-12A8B1011E5A}</UniqueIdentifier>
+      <UniqueIdentifier>{27239A09-145E-015C-0CCE-6A67C0C193E7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ExprIntrp">
-      <UniqueIdentifier>{6FD35619-0AA8-03AA-158E-E141B7A15C7F}</UniqueIdentifier>
+      <UniqueIdentifier>{D5586BFA-12F4-0197-015F-8836F3CF8C4E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -322,9 +322,6 @@
       <Filter>Source files\Poly</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.cxx">
-      <Filter>Source files\Poly</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Poly\Poly_Triangle.cxx">
       <Filter>Source files\Poly</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Poly\Poly_Triangulation.cxx">
@@ -869,9 +866,6 @@
     <ClInclude Include="..\..\..\src\math\math_GaussMultipleIntegration.lxx">
       <Filter>Header files\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\math\math_GaussPoints.hxx">
-      <Filter>Header files\math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\math\math_GaussSetIntegration.hxx">
       <Filter>Header files\math</Filter>
     </ClInclude>
@@ -1073,9 +1067,6 @@
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_BSplKnotDistribution.hxx">
       <Filter>Header files\GeomAbs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_CurveForm.hxx">
-      <Filter>Header files\GeomAbs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_CurveType.hxx">
       <Filter>Header files\GeomAbs</Filter>
     </ClInclude>
@@ -1088,13 +1079,7 @@
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_Shape.hxx">
       <Filter>Header files\GeomAbs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_SurfaceForm.hxx">
-      <Filter>Header files\GeomAbs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_SurfaceType.hxx">
-      <Filter>Header files\GeomAbs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_UVSense.hxx">
       <Filter>Header files\GeomAbs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Poly\Poly.hxx">
@@ -1133,25 +1118,13 @@
     <ClInclude Include="..\..\..\src\Poly\Poly_Polygon2D.hxx">
       <Filter>Header files\Poly</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Poly\Poly_Polygon2D.lxx">
-      <Filter>Header files\Poly</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\Poly\Poly_Polygon3D.hxx">
-      <Filter>Header files\Poly</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Poly\Poly_Polygon3D.lxx">
       <Filter>Header files\Poly</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.hxx">
       <Filter>Header files\Poly</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.lxx">
-      <Filter>Header files\Poly</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\Poly\Poly_Triangle.hxx">
-      <Filter>Header files\Poly</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Poly\Poly_Triangle.lxx">
       <Filter>Header files\Poly</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Poly\Poly_Triangulation.hxx">
@@ -1371,6 +1344,9 @@
       <Filter>Header files\BVH</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\BVH\BVH_RadixSorter.hxx">
+      <Filter>Header files\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BVH\BVH_Ray.hxx">
       <Filter>Header files\BVH</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\BVH\BVH_Set.hxx">
@@ -1812,9 +1788,6 @@
       <Filter>Header files\TColgp</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_Datum3D.hxx">
-      <Filter>Header files\TopLoc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\TopLoc\TopLoc_Datum3D.lxx">
       <Filter>Header files\TopLoc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_IndexedMapOfLocation.hxx">

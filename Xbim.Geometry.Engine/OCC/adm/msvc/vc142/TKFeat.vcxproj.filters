@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{59DB1CB4-0A03-1740-142E-38B91E0176BD}</UniqueIdentifier>
+      <UniqueIdentifier>{A4FA5942-1275-0889-11DE-2A13264F35D3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{1A7F1E58-0075-1713-0314-295E70F72CFF}</UniqueIdentifier>
+      <UniqueIdentifier>{56BFB414-1451-0195-1396-84BBD8488696}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocOpe">
-      <UniqueIdentifier>{AB2EDF49-130E-0527-15B7-969E6077D1C0}</UniqueIdentifier>
+      <UniqueIdentifier>{7C10ABE2-029E-034C-09BA-C5A20D121F92}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFeat">
-      <UniqueIdentifier>{6BC5BAB8-102A-0C61-17B9-D8BE62BB482A}</UniqueIdentifier>
+      <UniqueIdentifier>{D6E02241-087F-1639-11BC-7895689908A1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\LocOpe">
-      <UniqueIdentifier>{7EFB529A-0C60-0488-014D-2F93BC8C34DE}</UniqueIdentifier>
+      <UniqueIdentifier>{05A4B2E7-117A-08DE-1227-7AF0613BB1A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepFeat">
-      <UniqueIdentifier>{E2F0A4B2-0567-1869-03D8-134C4CF62ABF}</UniqueIdentifier>
+      <UniqueIdentifier>{0CFF9AD6-0C77-1312-17BF-F4EC2DBD9EA5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

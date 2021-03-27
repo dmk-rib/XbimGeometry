@@ -2,64 +2,64 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{6E4DC4DB-1886-016B-0AEC-7C7AD363C1C4}</UniqueIdentifier>
+      <UniqueIdentifier>{1B71B56C-16AC-0477-0428-2855F723D056}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{4657AEA2-16A7-02C5-063A-AAC98E96ADE0}</UniqueIdentifier>
+      <UniqueIdentifier>{42EE6303-1811-0FEA-12A2-04DF58E340C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiDS">
-      <UniqueIdentifier>{7189F331-0716-1042-1617-FFE6CB892B60}</UniqueIdentifier>
+      <UniqueIdentifier>{B23EBA53-02E2-0BAD-06FF-B4173960AC5D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi2d">
-      <UniqueIdentifier>{7ED3E818-09C1-0B0E-1671-8BD9275DB008}</UniqueIdentifier>
+      <UniqueIdentifier>{D44E7CF6-127E-10C6-0B1D-27C4E6F0095B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFi3d">
-      <UniqueIdentifier>{D019EE05-1583-0E79-0015-332B766A7EC0}</UniqueIdentifier>
+      <UniqueIdentifier>{F65FE711-0C14-0512-04BD-C9C026663926}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ChFiKPart">
-      <UniqueIdentifier>{A7AF106D-11A3-05C9-1266-E07B5FC3D6F2}</UniqueIdentifier>
+      <UniqueIdentifier>{32297DC4-0427-11F6-0144-E799EF2B24A1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Blend">
-      <UniqueIdentifier>{54AFE6CE-07BC-11F3-11A0-49795EBF490A}</UniqueIdentifier>
+      <UniqueIdentifier>{72001286-13F1-0D94-0524-73373F302589}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepBlend">
-      <UniqueIdentifier>{5467D056-0770-056B-12B2-E74C5744E7CE}</UniqueIdentifier>
+      <UniqueIdentifier>{F07D5FEB-0BEE-0F57-1140-B25E2041A915}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BlendFunc">
-      <UniqueIdentifier>{CEB7C938-10E9-16BA-0C3D-92DAD65D5909}</UniqueIdentifier>
+      <UniqueIdentifier>{C3C8CFDB-16BF-0D4C-15E0-786CCF2FB34F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFilletAPI">
-      <UniqueIdentifier>{805F157E-0447-17E7-00D0-79C4EC6F980D}</UniqueIdentifier>
+      <UniqueIdentifier>{A510DCFF-0315-0AEA-0560-CAC4431B2338}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FilletSurf">
-      <UniqueIdentifier>{679AF09E-0B57-18C4-0B7A-8B58D1743A8D}</UniqueIdentifier>
+      <UniqueIdentifier>{A5469D6B-1354-0E0B-0EB0-8156FC75D5D5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ChFiDS">
-      <UniqueIdentifier>{B01230E7-185C-1170-14EC-2B3E6E0FB00D}</UniqueIdentifier>
+      <UniqueIdentifier>{29B2FC5A-003C-0F56-12EB-D18F7721CE0C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ChFi2d">
-      <UniqueIdentifier>{EF291A27-055F-068A-01AC-066B7879CBB6}</UniqueIdentifier>
+      <UniqueIdentifier>{5E95B23B-0FC7-04BE-15DF-C1EA3BF8CA70}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ChFi3d">
-      <UniqueIdentifier>{2D4ECCD9-0A26-111A-0B1D-8C51522F0958}</UniqueIdentifier>
+      <UniqueIdentifier>{B2BFACB4-03CF-06EB-0F5A-F6B2C2521049}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\ChFiKPart">
-      <UniqueIdentifier>{0E816D25-0349-0F26-023F-084DB726578E}</UniqueIdentifier>
+      <UniqueIdentifier>{AB5C1382-0C80-15C2-12C0-A835E96B6F84}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Blend">
-      <UniqueIdentifier>{3E585521-117F-1383-1112-EC60D8CA38AB}</UniqueIdentifier>
+      <UniqueIdentifier>{665F058E-0C0E-039A-0D95-E7F192A4B587}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepBlend">
-      <UniqueIdentifier>{4E911E21-085D-099C-07A6-20FCA6AB1627}</UniqueIdentifier>
+      <UniqueIdentifier>{89D85A0D-0C63-0584-0051-C4CE7BD00226}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BlendFunc">
-      <UniqueIdentifier>{3B8F9D25-02FF-05D8-0A80-237E8747D851}</UniqueIdentifier>
+      <UniqueIdentifier>{3D156994-101A-148F-0A1A-E870A43B5F0D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepFilletAPI">
-      <UniqueIdentifier>{CACCC224-1191-158D-12C8-6EEB00066E8F}</UniqueIdentifier>
+      <UniqueIdentifier>{DD4E9975-10C5-0C9C-1212-AE5420153400}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\FilletSurf">
-      <UniqueIdentifier>{449BF265-05B8-0474-0287-04525EBBC570}</UniqueIdentifier>
+      <UniqueIdentifier>{0911FF67-16AA-16D4-0A6A-113AFE3815F0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -513,6 +513,9 @@
       <Filter>Header files\ChFiDS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\ChFiDS\ChFiDS_SurfData.lxx">
+      <Filter>Header files\ChFiDS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ChFiDS\ChFiDS_TypeOfConcavity.hxx">
       <Filter>Header files\ChFiDS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\ChFi2d\ChFi2d.hxx">

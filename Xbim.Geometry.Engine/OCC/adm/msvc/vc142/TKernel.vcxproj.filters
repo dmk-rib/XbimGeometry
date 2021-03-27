@@ -2,97 +2,97 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D8E2B8B0-153D-096E-1491-F4B8E39655A0}</UniqueIdentifier>
+      <UniqueIdentifier>{90412BCA-0013-07A1-0433-B64DB8A893EA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{CFA43222-0C12-07CD-0EB9-8A4ACF357FB3}</UniqueIdentifier>
+      <UniqueIdentifier>{870D6DB8-0542-14EC-0987-45A4F851B328}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FSD">
-      <UniqueIdentifier>{52FF7390-0B5E-0984-1503-7E712B37D97D}</UniqueIdentifier>
+      <UniqueIdentifier>{C90CE646-13AC-0702-0638-CE819D9FABF8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OSD">
-      <UniqueIdentifier>{A79DA7A5-192F-155B-164B-D09638367816}</UniqueIdentifier>
+      <UniqueIdentifier>{D34F1BAE-0EC1-10E4-0978-36AD3DA78F4A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plugin">
-      <UniqueIdentifier>{06191575-0C39-0311-048A-6D231319DDA5}</UniqueIdentifier>
+      <UniqueIdentifier>{B04F67F2-01F9-099C-0744-D6E1716AD418}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Quantity">
-      <UniqueIdentifier>{2692C4F6-1639-18FE-04C3-B1BDB11CB4F3}</UniqueIdentifier>
+      <UniqueIdentifier>{8AAD50E7-03EC-1977-08E7-3F864C8A27D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Resource">
-      <UniqueIdentifier>{ABCB6CFB-0299-0B1D-1693-26071C9CFCE4}</UniqueIdentifier>
+      <UniqueIdentifier>{3C3636C0-16E4-0DA7-0502-77E2ACC2B710}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Standard">
-      <UniqueIdentifier>{9EE126FC-0C21-137F-1290-3A87869793F9}</UniqueIdentifier>
+      <UniqueIdentifier>{80BCF79F-0087-0B24-162F-5C140B280243}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Storage">
-      <UniqueIdentifier>{73D1A9CC-073D-06B2-07D9-9E996C6A8870}</UniqueIdentifier>
+      <UniqueIdentifier>{ACA13428-0265-1148-110C-556256AB099B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColStd">
-      <UniqueIdentifier>{23854780-14E1-038E-01B8-AB61B59BF30B}</UniqueIdentifier>
+      <UniqueIdentifier>{03CE217D-0CC6-03B0-05CC-81D1E5FB1436}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TCollection">
-      <UniqueIdentifier>{716A7740-1394-001F-01DE-4B5F5A611CBC}</UniqueIdentifier>
+      <UniqueIdentifier>{EBEC65BE-0EA3-12B0-12B7-B17246C561EB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Units">
-      <UniqueIdentifier>{A59B2606-1715-06E6-0F7A-9F2E0B87D47E}</UniqueIdentifier>
+      <UniqueIdentifier>{9FA971E2-0CB1-020F-0D4D-F6F0B835C62B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsAPI">
-      <UniqueIdentifier>{8FC686A3-0895-04B1-188D-177059D121AE}</UniqueIdentifier>
+      <UniqueIdentifier>{6531ABEA-09AA-01C1-157B-09438830A105}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NCollection">
-      <UniqueIdentifier>{FA333C93-00E3-0788-1477-938F86B3D041}</UniqueIdentifier>
+      <UniqueIdentifier>{9B6D1B91-1837-1325-1353-F7CEDE2E709A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Message">
-      <UniqueIdentifier>{2D735B3F-0266-1054-0CDA-91E297B339BF}</UniqueIdentifier>
+      <UniqueIdentifier>{E2BBB0A9-12C7-05BB-0D95-15FDD7CC6F6F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\FSD">
-      <UniqueIdentifier>{944AC1DB-101F-1745-0686-66536BEECAD5}</UniqueIdentifier>
+      <UniqueIdentifier>{A8206BAE-1496-0C54-0549-88FBFC579822}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\MMgt">
-      <UniqueIdentifier>{469ED8F6-13C7-0420-0336-9005945E4C5A}</UniqueIdentifier>
+      <UniqueIdentifier>{C5217E91-1941-182B-0EEA-A9C99AF2DB59}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\OSD">
-      <UniqueIdentifier>{E6AC7D74-0370-0195-0FC3-69500705156C}</UniqueIdentifier>
+      <UniqueIdentifier>{1EDA9A8A-0D8D-0272-0900-C4B8AD386D6E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Plugin">
-      <UniqueIdentifier>{C175E052-028A-168E-0FFA-C18807C99C0F}</UniqueIdentifier>
+      <UniqueIdentifier>{985BA45A-008A-16CE-0620-7EA4CA74E9D3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Quantity">
-      <UniqueIdentifier>{24C324F8-1905-079F-10AA-20CD227BB14E}</UniqueIdentifier>
+      <UniqueIdentifier>{A35345DB-1929-01C2-1188-25BCD9918497}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Resource">
-      <UniqueIdentifier>{B5A54447-0F1A-0892-100B-D2BCC26681B3}</UniqueIdentifier>
+      <UniqueIdentifier>{98091617-094D-18EF-040D-2763B001D189}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Standard">
-      <UniqueIdentifier>{CD18B851-108C-0908-095B-F9382ED75EC3}</UniqueIdentifier>
+      <UniqueIdentifier>{639618F1-0EB3-1123-13A7-53C2AE124DFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\StdFail">
-      <UniqueIdentifier>{8E90A61B-10F3-11BF-0574-538296A254E4}</UniqueIdentifier>
+      <UniqueIdentifier>{BE275670-17E5-12FB-042F-0973E196DE3D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Storage">
-      <UniqueIdentifier>{7370A82E-085A-0252-09BB-3492AC896C42}</UniqueIdentifier>
+      <UniqueIdentifier>{D87CBCBE-0E60-0FAA-0863-1531264DECB6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TColStd">
-      <UniqueIdentifier>{228A5CDA-068E-05B0-1231-BB275713E401}</UniqueIdentifier>
+      <UniqueIdentifier>{EFBFA830-1370-0595-130F-EC30B170F300}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TCollection">
-      <UniqueIdentifier>{DE2C5DE3-0EEA-0AFF-147D-AA35438ED1F2}</UniqueIdentifier>
+      <UniqueIdentifier>{6185BD39-0278-0EDE-153D-7CA0EA286369}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TShort">
-      <UniqueIdentifier>{7997E13E-080E-0527-154D-F475032E383F}</UniqueIdentifier>
+      <UniqueIdentifier>{96917382-02FC-16EA-0537-0D7982A4475E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Units">
-      <UniqueIdentifier>{6EC22458-0EF9-16ED-0C3F-2F95D21518DB}</UniqueIdentifier>
+      <UniqueIdentifier>{49A28144-05A1-0562-1239-73655000A4F7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\UnitsAPI">
-      <UniqueIdentifier>{1306BC31-0097-1304-081E-5A0BB6B6E9CE}</UniqueIdentifier>
+      <UniqueIdentifier>{4E855E91-0C78-0CF0-1140-CA7F2D63654C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\NCollection">
-      <UniqueIdentifier>{AFFCC83F-09BB-1043-0B85-806A9DD79DFD}</UniqueIdentifier>
+      <UniqueIdentifier>{8F938E22-12DB-098D-09CA-74EC123699AB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Message">
-      <UniqueIdentifier>{C58B0622-0218-0222-060A-6082DE2FFE27}</UniqueIdentifier>
+      <UniqueIdentifier>{A2CD0D04-01A3-14A1-049A-AD5211E712DB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -450,7 +450,28 @@
     <ClCompile Include="..\..\..\src\Message\Message_Alert.cxx">
       <Filter>Source files\Message</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_AlertExtended.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Message\Message_Algorithm.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Attribute.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeMeter.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeObject.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_AttributeStream.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_CompositeAlerts.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_Level.cxx">
       <Filter>Source files\Message</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Message\Message_Messenger.cxx">
@@ -468,13 +489,13 @@
     <ClCompile Include="..\..\..\src\Message\Message_PrinterOStream.cxx">
       <Filter>Source files\Message</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_PrinterSystemLog.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Message\Message_PrinterToReport.cxx">
+      <Filter>Source files\Message</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Message\Message_ProgressIndicator.cxx">
-      <Filter>Source files\Message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Message\Message_ProgressScale.cxx">
-      <Filter>Source files\Message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Message\Message_ProgressSentry.cxx">
       <Filter>Source files\Message</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Message\Message_Report.cxx">
@@ -770,9 +791,6 @@
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Color.hxx">
       <Filter>Header files\Quantity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorDefinitionError.hxx">
-      <Filter>Header files\Quantity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorHasher.hxx">
       <Filter>Header files\Quantity</Filter>
     </ClInclude>
@@ -780,6 +798,9 @@
       <Filter>Header files\Quantity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorRGBAHasher.hxx">
+      <Filter>Header files\Quantity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Quantity\Quantity_ColorTable.pxx">
       <Filter>Header files\Quantity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Concentration.hxx">
@@ -1010,16 +1031,13 @@
     <ClInclude Include="..\..\..\src\Quantity\Quantity_Work.hxx">
       <Filter>Header files\Quantity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_Big5.h">
+    <ClInclude Include="..\..\..\src\Resource\Resource_Big5.pxx">
+      <Filter>Header files\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Resource\Resource_CodePages.pxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Resource\Resource_ConvertUnicode.hxx">
-      <Filter>Header files\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx">
-      <Filter>Header files\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Resource\Resource_DataMapOfAsciiStringAsciiString.hxx">
@@ -1031,10 +1049,10 @@
     <ClInclude Include="..\..\..\src\Resource\Resource_FormatType.hxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_GB2312.h">
+    <ClInclude Include="..\..\..\src\Resource\Resource_GB2312.pxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_GBK.h">
+    <ClInclude Include="..\..\..\src\Resource\Resource_GBK.pxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Resource\Resource_LexicalCompare.hxx">
@@ -1046,7 +1064,7 @@
     <ClInclude Include="..\..\..\src\Resource\Resource_NoSuchResource.hxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Resource\Resource_Shiftjis.h">
+    <ClInclude Include="..\..\..\src\Resource\Resource_Shiftjis.pxx">
       <Filter>Header files\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Resource\Resource_Unicode.hxx">
@@ -1286,6 +1304,9 @@
     <ClInclude Include="..\..\..\src\Standard\Standard_Version.hxx">
       <Filter>Header files\Standard</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\Standard\Standard_WarningDisableFunctionCast.hxx">
+      <Filter>Header files\Standard</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\src\Standard\Standard_WarningsDisable.hxx">
       <Filter>Header files\Standard</Filter>
     </ClInclude>
@@ -1323,9 +1344,6 @@
       <Filter>Header files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Storage\Storage_BaseDriver.hxx">
-      <Filter>Header files\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Storage\Storage_BaseDriver.lxx">
       <Filter>Header files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Storage\Storage_BucketOfPersistent.hxx">
@@ -1395,9 +1413,6 @@
       <Filter>Header files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Storage\Storage_Schema.hxx">
-      <Filter>Header files\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Storage\Storage_Schema.lxx">
       <Filter>Header files\Storage</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Storage\Storage_SeqOfRoot.hxx">
@@ -2027,9 +2042,6 @@
     <ClInclude Include="..\..\..\src\NCollection\NCollection_CellFilter.hxx">
       <Filter>Header files\NCollection</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\NCollection\NCollection_Comparator.hxx">
-      <Filter>Header files\NCollection</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\NCollection\NCollection_DataMap.hxx">
       <Filter>Header files\NCollection</Filter>
     </ClInclude>
@@ -2198,10 +2210,31 @@
     <ClInclude Include="..\..\..\src\Message\Message_Alert.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_AlertExtended.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Algorithm.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Algorithm.lxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_Attribute.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeMeter.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeObject.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_AttributeStream.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_CompositeAlerts.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_ConsoleColor.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_ExecStatus.hxx">
@@ -2211,6 +2244,9 @@
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_HArrayOfMsg.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_Level.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_ListIteratorOfListOfMsg.hxx">
@@ -2223,6 +2259,9 @@
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Messenger.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_MetricType.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Msg.hxx">
@@ -2240,31 +2279,28 @@
     <ClInclude Include="..\..\..\src\Message\Message_PrinterOStream.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_PrinterSystemLog.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Message\Message_PrinterToReport.hxx">
+      <Filter>Header files\Message</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_ProgressIndicator.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressIndicator.lxx">
+    <ClInclude Include="..\..\..\src\Message\Message_ProgressRange.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressScale.hxx">
-      <Filter>Header files\Message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressScale.lxx">
+    <ClInclude Include="..\..\..\src\Message\Message_ProgressScope.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_ProgressSentry.hxx">
-      <Filter>Header files\Message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Message\Message_ProgressSentry.lxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Report.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_SequenceOfPrinters.hxx">
-      <Filter>Header files\Message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\Message\Message_SequenceOfProgressScale.hxx">
       <Filter>Header files\Message</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\Message\Message_Status.hxx">

@@ -2,52 +2,52 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{8328B6CE-10F8-07FC-1533-7E540FC0B3E9}</UniqueIdentifier>
+      <UniqueIdentifier>{0CB5B486-0404-1156-11F4-73F60F1F8027}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{63AF6A39-1463-150A-0228-E57271BC94AC}</UniqueIdentifier>
+      <UniqueIdentifier>{16937B62-12B8-13CF-15A7-C8356E2BD992}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRep">
-      <UniqueIdentifier>{C4AA1EA7-0D33-05E7-1857-C8121F1DD9A1}</UniqueIdentifier>
+      <UniqueIdentifier>{D91D0D80-0417-09C2-110C-40E7B82D0DC8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepDS">
-      <UniqueIdentifier>{BAF23837-1280-0BB1-1234-2C48BD5B7606}</UniqueIdentifier>
+      <UniqueIdentifier>{E3F9E022-0FE7-07D6-0B6D-FE68045F1D2E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepBuild">
-      <UniqueIdentifier>{A188335F-0AEF-0FA6-0A93-EDC513258F7E}</UniqueIdentifier>
+      <UniqueIdentifier>{74CE4779-0A14-07CC-0379-2B3454789087}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepTool">
-      <UniqueIdentifier>{EFB7883F-003B-029B-0711-70C8AE874A83}</UniqueIdentifier>
+      <UniqueIdentifier>{58A8F41B-180A-03E5-06D6-7AF300E7ABB6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgo">
-      <UniqueIdentifier>{2CDF3DBF-0DD8-0048-15D6-8D71981CF103}</UniqueIdentifier>
+      <UniqueIdentifier>{BA75B028-049F-0914-0D0B-14126DC5C51F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFill">
-      <UniqueIdentifier>{132B33E7-054E-0A94-1020-161BDD7F5FC1}</UniqueIdentifier>
+      <UniqueIdentifier>{109B8C65-05D9-1911-0127-078EFE3CF255}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepProj">
-      <UniqueIdentifier>{6780E083-0C83-1629-0A14-67F59B2D93D5}</UniqueIdentifier>
+      <UniqueIdentifier>{49C3B43C-0B5B-00FF-1162-BFAC6ED19C68}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopOpeBRep">
-      <UniqueIdentifier>{44AE12C0-1482-13E0-07D8-0B23EC637FE7}</UniqueIdentifier>
+      <UniqueIdentifier>{737B08E9-0F28-069E-13E8-29C695AC6D9E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopOpeBRepDS">
-      <UniqueIdentifier>{6241765B-0A8F-16B9-0F4A-52DDA45555D8}</UniqueIdentifier>
+      <UniqueIdentifier>{50B6FBD1-0D03-1007-1897-8A4BDB7A270A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopOpeBRepBuild">
-      <UniqueIdentifier>{7716A6F7-15C8-15BB-0591-9E389F978E20}</UniqueIdentifier>
+      <UniqueIdentifier>{991A6349-0E0F-0477-1152-8654EF325123}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\TopOpeBRepTool">
-      <UniqueIdentifier>{F4003613-1294-02F0-0FD8-D3C0F1204585}</UniqueIdentifier>
+      <UniqueIdentifier>{6CE67998-01C0-0408-12AF-767593211063}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepAlgo">
-      <UniqueIdentifier>{B42CACCE-1032-00C2-1956-7814FDAA1F02}</UniqueIdentifier>
+      <UniqueIdentifier>{BB0B8E2F-06C3-0626-0F29-002F010E0760}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepFill">
-      <UniqueIdentifier>{D9DF85FE-08F3-06EB-0D49-64D1AF023A69}</UniqueIdentifier>
+      <UniqueIdentifier>{0639E94C-0FF6-1264-0BA1-E1A78CBF0046}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\BRepProj">
-      <UniqueIdentifier>{4900896C-02F1-179E-09E2-FFE853EDCC3A}</UniqueIdentifier>
+      <UniqueIdentifier>{AB00DE9C-0ECE-1095-07BE-BAFBB4E32144}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

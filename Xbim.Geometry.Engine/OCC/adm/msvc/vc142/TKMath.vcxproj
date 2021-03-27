@@ -19,27 +19,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7AEB42BE-0908-080B-0700-7EDE2329D6DB}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{BF2891A0-0995-05B8-04F0-71556D9F7842}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -90,7 +89,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;No_Exception;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -135,7 +134,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>OCCT_STATIC_BUILD;HAVE_NO_DLL;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;$(CSF_DEFINES);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc14\objd\TKMath/</AssemblerListingLocation>
@@ -344,7 +343,6 @@
     <ClInclude Include="..\..\..\src\math\math_GaussLeastSquare.lxx" />
     <ClInclude Include="..\..\..\src\math\math_GaussMultipleIntegration.hxx" />
     <ClInclude Include="..\..\..\src\math\math_GaussMultipleIntegration.lxx" />
-    <ClInclude Include="..\..\..\src\math\math_GaussPoints.hxx" />
     <ClInclude Include="..\..\..\src\math\math_GaussSetIntegration.hxx" />
     <ClInclude Include="..\..\..\src\math\math_GaussSetIntegration.lxx" />
     <ClInclude Include="..\..\..\src\math\math_GaussSingleIntegration.hxx" />
@@ -428,14 +426,11 @@
     <ClInclude Include="..\..\..\src\PLib\PLib_JacobiPolynomial_Data.pxx" />
     <ClInclude Include="..\..\..\src\Precision\Precision.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_BSplKnotDistribution.hxx" />
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_CurveForm.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_CurveType.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_IsoType.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_JoinType.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_Shape.hxx" />
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_SurfaceForm.hxx" />
     <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_SurfaceType.hxx" />
-    <ClInclude Include="..\..\..\src\GeomAbs\GeomAbs_UVSense.hxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly.cxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly_CoherentLink.cxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly_CoherentNode.cxx" />
@@ -447,7 +442,6 @@
     <ClCompile Include="..\..\..\src\Poly\Poly_Polygon2D.cxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly_Polygon3D.cxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.cxx" />
-    <ClCompile Include="..\..\..\src\Poly\Poly_Triangle.cxx" />
     <ClCompile Include="..\..\..\src\Poly\Poly_Triangulation.cxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly.hxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_Array1OfTriangle.hxx" />
@@ -461,13 +455,9 @@
     <ClInclude Include="..\..\..\src\Poly\Poly_ListOfTriangulation.hxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_MakeLoops.hxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_Polygon2D.hxx" />
-    <ClInclude Include="..\..\..\src\Poly\Poly_Polygon2D.lxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_Polygon3D.hxx" />
-    <ClInclude Include="..\..\..\src\Poly\Poly_Polygon3D.lxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.hxx" />
-    <ClInclude Include="..\..\..\src\Poly\Poly_PolygonOnTriangulation.lxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_Triangle.hxx" />
-    <ClInclude Include="..\..\..\src\Poly\Poly_Triangle.lxx" />
     <ClInclude Include="..\..\..\src\Poly\Poly_Triangulation.hxx" />
     <ClCompile Include="..\..\..\src\CSLib\CSLib.cxx" />
     <ClCompile Include="..\..\..\src\CSLib\CSLib_Class2d.cxx" />
@@ -574,6 +564,7 @@
     <ClInclude Include="..\..\..\src\BVH\BVH_QueueBuilder.hxx" />
     <ClInclude Include="..\..\..\src\BVH\BVH_QuickSorter.hxx" />
     <ClInclude Include="..\..\..\src\BVH\BVH_RadixSorter.hxx" />
+    <ClInclude Include="..\..\..\src\BVH\BVH_Ray.hxx" />
     <ClInclude Include="..\..\..\src\BVH\BVH_Set.hxx" />
     <ClInclude Include="..\..\..\src\BVH\BVH_Sorter.hxx" />
     <ClInclude Include="..\..\..\src\BVH\BVH_SpatialMedianBuilder.hxx" />
@@ -762,7 +753,6 @@
     <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListNodeOfItemLocation.cxx" />
     <ClCompile Include="..\..\..\src\TopLoc\TopLoc_SListOfItemLocation.cxx" />
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_Datum3D.hxx" />
-    <ClInclude Include="..\..\..\src\TopLoc\TopLoc_Datum3D.lxx" />
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_IndexedMapOfLocation.hxx" />
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_ItemLocation.hxx" />
     <ClInclude Include="..\..\..\src\TopLoc\TopLoc_Location.hxx" />
@@ -924,6 +914,7 @@
     <ClInclude Include="..\..\..\src\ExprIntrp\ExprIntrp_SyntaxError.hxx" />
     <ClInclude Include="..\..\..\src\ExprIntrp\ExprIntrp_yaccanal.hxx" />
     <ClInclude Include="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.hxx" />
+
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TKMath.rc" />
@@ -932,3 +923,4 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
+
