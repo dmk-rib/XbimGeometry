@@ -18,25 +18,23 @@ namespace Xbim.Geometry.Engine.Interop
 
         static XbimGeometryEngine()
         {
-
-          //  We need to wire in a custom assembly resolver since Xbim.Geometry.Engine is
-          //  not located using standard probing rules(due to way we deploy processor specific binaries)
-#if DELAY_LOAD
+             
+            // We need to wire in a custom assembly resolver since Xbim.Geometry.Engine is 
+            // not located using standard probing rules (due to way we deploy processor specific binaries)
             AppDomain.CurrentDomain.AssemblyResolve += XbimCustomAssemblyResolver.ResolverHandler;
-#endif
         }
 
         public XbimGeometryEngine() : this(null)
-        { 
-        }
+        { }
 
         public XbimGeometryEngine(ILogger<XbimGeometryEngine> logger)
         {
+
+            // Warn if runtime for Engine is not present, this is not necessary any more as we are net472
+            //XbimPrerequisitesValidator.Validate();
+
+
             _logger = logger ?? XbimLogging.CreateLogger<XbimGeometryEngine>();
-
-            //  Warn if runtime for Engine is not present, this is not necessary any more as we are net47
-
-#if DELAY_LOAD
 
             var conventions = new XbimArchitectureConventions();    // understands the process we run under
             string assemblyName = $"{conventions.ModuleName}.dll";// + conventions.Suffix; dropping the use of a suffix
@@ -66,9 +64,7 @@ namespace Xbim.Geometry.Engine.Interop
                 _logger.LogError(0, e, "Failed to construct XbimGeometryEngine");
                 throw new FileLoadException($"Failed to load Xbim.Geometry.Engine{conventions.Suffix}.dll", e);
             }
-#else
-            _engine = new XbimGeometryCreator();
-#endif
+
         }
 
         public IXbimGeometryObject Create(IIfcGeometricRepresentationItem ifcRepresentation, ILogger logger)
@@ -841,8 +837,18 @@ namespace Xbim.Geometry.Engine.Interop
             }
         }
 
-        
-    }
+		public void WriteBrep(string filename, IXbimGeometryObject geomObj)
+		{
+            // no logger is provided so no tracing is started for this function
+            _engine.WriteBrep(filename, geomObj);
+		}
+
+		public IXbimGeometryObject ReadBrep(string filename)
+		{
+            // no logger is provided so no tracing is started for this function
+            return _engine.ReadBrep(filename);
+		}
+	}
 
     public static class LogHelper
     {
@@ -897,7 +903,7 @@ namespace Xbim.Geometry.Engine.Interop
             logger.LogTrace("Entering GeometryEngine {function} with point {x},{y},{z}", methodName, point.X, point.Y, point.Z);
         }
 
-#region IDisposable Support
+        #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
@@ -926,7 +932,7 @@ namespace Xbim.Geometry.Engine.Interop
             Dispose(true);
             GC.SuppressFinalize(this);  // To avoid excessive GC
         }
-#endregion
+        #endregion
 
 
 
