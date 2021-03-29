@@ -3,13 +3,15 @@ trigger:
     include:
     - master
     - develop
-    - netcoreapp31
   paths:
     exclude:
     - README.md
     - CHANGELOG.md
     - CONTRIBUTING.md
 
+pool:
+  vmImage: 'windows-latest'
+  
 variables:
   BuildConfiguration: 'Release'
   BuildPlatform: 'Any CPU'
@@ -60,26 +62,26 @@ jobs:
   # Version .NET Core project files
   # Description - Applies a version to a .NET Core assembly via the .csproj files based on the build number. 
   # Based on https://github.com/rfennell/AzurePipelines/wiki/Version-Assemblies-and-Packages-Tasks-YAML#versiondotnetcoreassembliestask
-  - task: VersionDotNetCoreAssemblies@2
-    displayName: 'Update netcore FileVersions'
-    inputs: 
-      # Required arguments
-      Path: $(Build.SourcesDirectory)
-      VersionNumber: $(fileversion)
-      VersionRegex: \d+\.\d+\.\d+\.\d+
-      FilenamePattern: .csproj
-      Field: fileversion
-      OutputVersion: OutputedVersion
-  - task: VersionDotNetCoreAssemblies@2
-    displayName: 'Update global Versions'
-    inputs: 
-      # Required arguments
-      Path: $(Build.SourcesDirectory)
-      VersionNumber: $(packageversion)
-      VersionRegex: \d+\.\d+\.\d+.*
-      FilenamePattern: directory.build.props
-      Field: Version
-      OutputVersion: OutputedVersion
+  # - task: VersionDotNetCoreAssemblies@2
+  #   displayName: 'Update netcore FileVersions'
+  #   inputs: 
+  #     # Required arguments
+  #     Path: $(Build.SourcesDirectory)
+  #     VersionNumber: $(fileversion)
+  #     VersionRegex: \d+\.\d+\.\d+\.\d+
+  #     FilenamePattern: .csproj
+  #     Field: fileversion
+  #     OutputVersion: OutputedVersion
+  # - task: VersionDotNetCoreAssemblies@2
+  #   displayName: 'Update global Versions'
+  #   inputs: 
+  #     # Required arguments
+  #     Path: $(Build.SourcesDirectory)
+  #     VersionNumber: $(packageversion)
+  #     VersionRegex: \d+\.\d+\.\d+.*
+  #     FilenamePattern: directory.build.props
+  #     Field: Version
+  #     OutputVersion: OutputedVersion
   
   # Version Native C++
   - powershell: |
@@ -107,21 +109,6 @@ jobs:
       SourceFolder: '$(build.sourcesdirectory)'
       Contents: '**\bin\$(BuildConfiguration)\**\*.nupkg'
 
-  - task: VSBuild@1
-    displayName: 'Build x86 OCC'
-    inputs:
-      solution: 'Xbim.Geometry.Engine.sln'
-      msbuildArgs: '/t:build'
-      platform: 'x86'
-      configuration: '$(BuildConfiguration)'
-
-  - task: VSBuild@1
-    displayName: 'Build x64 OCC'
-    inputs:
-      solution: 'Xbim.Geometry.Engine.sln'
-      msbuildArgs: '/t:build'
-      platform: 'x64'
-      configuration: '$(BuildConfiguration)'
   - task: VSBuild@1
     displayName: 'Build and pack solution Xbim.Geometry.Engine.sln'
     inputs:
@@ -169,35 +156,23 @@ jobs:
       PathtoPublish: '$(build.artifactstagingdirectory)'
     condition: succeededOrFailed()
   
-  # Publish to master or develop MyGet feed based on the source branch
-  - task: NuGetCommand@2
-    name: 'MyGetPublishing_Master'
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    inputs:
-      command: push
-      nuGetFeedType: external
-      publishFeedCredentials: 'MyGetMaster'
-      versioningScheme: byEnvVar
-      versionEnvVar: packageversion
+  # # Publish to master or develop MyGet feed based on the source branch
+  # - task: NuGetCommand@2
+  #   name: 'MyGetPublishing_Master'
+  #   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  #   inputs:
+  #     command: push
+  #     nuGetFeedType: external
+  #     publishFeedCredentials: 'MyGetMaster'
+  #     versioningScheme: byEnvVar
+  #     versionEnvVar: packageversion
   
-  - task: NuGetCommand@2
-    name: 'MyGetPublishing_Develop'
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/develop')
-    inputs:
-      command: push
-      nuGetFeedType: external
-      publishFeedCredentials: 'MyGetDev'
-      versioningScheme: byEnvVar
-      versionEnvVar: packageversion
-
-  - task: NuGetCommand@2
-    name: 'MyGetPublishing_NetCore'
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/netcoreapp31')
-    inputs:
-      command: push
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'external'
-      publishFeedCredentials: 'MyGetNetCore'
-      versioningScheme: byEnvVar
-      versionEnvVar: packageversion
-
+  # - task: NuGetCommand@2
+  #   name: 'MyGetPublishing_Develop'
+  #   condition: eq(variables['Build.SourceBranch'], 'refs/heads/develop')
+  #   inputs:
+  #     command: push
+  #     nuGetFeedType: external
+  #     publishFeedCredentials: 'MyGetDev'
+  #     versioningScheme: byEnvVar
+  #     versionEnvVar: packageversion

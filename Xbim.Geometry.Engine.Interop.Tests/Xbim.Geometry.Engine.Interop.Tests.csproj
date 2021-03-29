@@ -6,9 +6,8 @@
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
-    <Platforms>x64;x86;AnyCPU</Platforms>
-    
-    
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -2,8 +2,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <SignAssembly>false</SignAssembly>  
-    <Platforms>x64;x86;AnyCPU</Platforms>
+    <SignAssembly>false</SignAssembly>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <PlatformTarget>AnyCPU</PlatformTarget>
