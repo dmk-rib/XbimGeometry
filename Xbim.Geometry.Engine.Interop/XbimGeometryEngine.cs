@@ -19,8 +19,8 @@ namespace Xbim.Geometry.Engine.Interop
         static XbimGeometryEngine()
         {
 
-          // We need to wire in a custom assembly resolver since Xbim.Geometry.Engine is
-          // not located using standard probing rules (due to way we deploy processor specific binaries)
+          //  We need to wire in a custom assembly resolver since Xbim.Geometry.Engine is
+          //  not located using standard probing rules(due to way we deploy processor specific binaries)
 #if DELAY_LOAD
             AppDomain.CurrentDomain.AssemblyResolve += XbimCustomAssemblyResolver.ResolverHandler;
 #endif
@@ -34,7 +34,7 @@ namespace Xbim.Geometry.Engine.Interop
         {
             _logger = logger ?? XbimLogging.CreateLogger<XbimGeometryEngine>();
 
-            // Warn if runtime for Engine is not present, this is not necessary any more as we are net5.0
+            //  Warn if runtime for Engine is not present, this is not necessary any more as we are net47
             //XbimPrerequisitesValidator.Validate();
 
 #if DELAY_LOAD
@@ -819,6 +819,18 @@ namespace Xbim.Geometry.Engine.Interop
             }
         }
 
+        public void WriteBrep(string filename, IXbimGeometryObject geomObj)
+        {
+            // no logger is provided so no tracing is started for this function
+            _engine.WriteBrep(filename, geomObj);
+        }
+
+        public IXbimGeometryObject ReadBrep(string filename)
+        {
+            // no logger is provided so no tracing is started for this function
+            return _engine.ReadBrep(filename);
+        }
+
         public IXbimSolidSet CreateSolidSet(IIfcSweptAreaSolid ifcSolid, ILogger logger = null)
         {
             using (new Tracer(LogHelper.CurrentFunctionName(), this._logger, ifcSolid))
@@ -842,17 +854,7 @@ namespace Xbim.Geometry.Engine.Interop
             }
         }
 
-        public void WriteBrep(string filename, IXbimGeometryObject geomObj)
-        {
-            // no logger is provided so no tracing is started for this function
-            _engine.WriteBrep(filename, geomObj);
-        }
-
-        public IXbimGeometryObject ReadBrep(string filename)
-        {
-            // no logger is provided so no tracing is started for this function
-            return _engine.ReadBrep(filename);
-        }
+        
     }
 
     public static class LogHelper
