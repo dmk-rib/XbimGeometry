@@ -9,9 +9,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Xbim.Geometry.Engine.Interop</PackageId>
     <PackageIcon>logo.png</PackageIcon>
-    <AssemblyVersion>5.4.0.1</AssemblyVersion>
-    <FileVersion>5.4.0.1</FileVersion>
-    <Version>5.7.0.0-Rib</Version>
+    <AssemblyVersion>6.4.0.1</AssemblyVersion>
+    <FileVersion>6.4.0.1</FileVersion>
+    <Version>6.7.0.0-Rib</Version>
     <SignAssembly>false</SignAssembly>
     <PlatformTarget>x64</PlatformTarget>
     <PackageReleaseNotes>Version 5.2 net5.0 support See https://github.com/xBimTeam/XbimGeometry/blob/master/CHANGELOG.md </PackageReleaseNotes>
@@ -56,24 +56,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(SolutionDir)Output\x64\$(Configuration)\$(TargetFramework)\Xbim.Geometry.Engine64.dll">
-      <Private>true</Private>
-      <Pack>true</Pack>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(SolutionDir)Output\x64\$(Configuration)\$(TargetFramework)\Ijwhost.dll">
-      <Private>true</Private>
-      <Pack>true</Pack>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-    </Content>
-  </ItemGroup>
 
-  <!--<ItemGroup> Ijwhost.dll
+  <!--<ItemGroup> 
     <Content Include="bin\$(Platform)\$(Configuration)\net5.0\Xbim.Geometry.Engine64.dll">
       <Pack>true</Pack>
       <PackagePath>build\net5.0;</PackagePath>

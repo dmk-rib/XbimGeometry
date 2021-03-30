@@ -8,9 +8,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>5.1.0.0-Rib</Version>
-    <AssemblyVersion>5.1.0.1</AssemblyVersion>
-    <FileVersion>5.1.0.1</FileVersion>
+    <Version>6.1.0.0-Rib</Version>
+    <AssemblyVersion>6.1.0.1</AssemblyVersion>
+    <FileVersion>6.1.0.1</FileVersion>
     <SignAssembly>false</SignAssembly>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <PlatformTarget>x64</PlatformTarget>
@@ -30,10 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Xbim.Geometry.Engine.Interop\Xbim.Geometry.Engine.Interop.csproj" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Private>true</Private>
-      <Pack>true</Pack>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
     </ProjectReference>
   </ItemGroup>
 
