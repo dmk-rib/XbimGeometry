@@ -1,3 +1,16 @@
+#include "XbimCompound.h"
+#include "XbimSolid.h"
+#include "XbimShell.h"
+#include "XbimFace.h"
+#include "XbimGeometryCreator.h"
+#include "XbimGeometryObjectSet.h"
+#include "XbimSolidSet.h"
+#include "XbimVertexSet.h"
+#include "XbimFaceSet.h"
+#include "XbimEdgeSet.h"
+#include "XbimShellSet.h"
+#include "XbimConvert.h"
+#include "XbimOccWriter.h"
 
 #include <GProp_GProps.hxx>
 #include <BRepGProp.hxx>
@@ -36,20 +49,7 @@
 #include <GeomLib_IsPlanarSurface.hxx>
 #include <Standard_CString.hxx>
 #include "XbimNativeApi.h"
-#include "XbimCompound.h"
-#include "XbimSolid.h"
-#include "XbimShell.h"
-#include "XbimFace.h"
-#include "XbimGeometryCreator.h"
-#include "XbimGeometryObjectSet.h"
-#include "XbimSolidSet.h"
-#include "XbimVertexSet.h"
-#include "XbimFaceSet.h"
-#include "XbimEdgeSet.h"
-#include "XbimShellSet.h"
-#include "XbimConvert.h"
-#include "XbimOccWriter.h"
-
+using namespace System;
 using namespace Xbim::Common::Exceptions;
 namespace Xbim
 {
@@ -58,8 +58,8 @@ namespace Xbim
 		/*Ensures native pointers are deleted and garbage collected*/
 		void XbimShell::InstanceCleanup()
 		{
-			System::IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, System::IntPtr::Zero);
-			if (temp != System::IntPtr::Zero)
+			IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, IntPtr::Zero);
+			if (temp != IntPtr::Zero)
 				delete (TopoDS_Shell*)(temp.ToPointer());
 			System::GC::SuppressFinalize(this);
 		}
@@ -169,7 +169,7 @@ namespace Xbim
 		int XbimShell::GetHashCode()
 		{
 			if (!IsValid) return 0;
-			return pShell->HashCode(System::Int32::MaxValue);
+			return pShell->HashCode(Int32::MaxValue);
 		}
 
 		bool XbimShell::operator ==(XbimShell^ left, XbimShell^ right)
@@ -226,7 +226,7 @@ namespace Xbim
 				if (!tester.IsPlanar())
 					return false;
 			}
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			//all faces are planar
 			return true;
 		}
@@ -243,7 +243,7 @@ namespace Xbim
 			Standard_Real srXmin, srYmin, srZmin, srXmax, srYmax, srZmax;
 			if (pBox.IsVoid()) return XbimRect3D::Empty;
 			pBox.Get(srXmin, srYmin, srZmin, srXmax, srYmax, srZmax);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return XbimRect3D(srXmin, srYmin, srZmin, (srXmax - srXmin), (srYmax - srYmin), (srZmax - srZmin));
 		}
 
@@ -252,7 +252,7 @@ namespace Xbim
 			if (!IsValid) return 0;
 			GProp_GProps gProps;
 			BRepGProp::SurfaceProperties(*pShell, gProps);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gProps.Mass();
 		}
 
@@ -271,7 +271,7 @@ namespace Xbim
 			if (!IsValid) return false;
 			BRepCheck_Shell checker(*pShell);
 			BRepCheck_Status result = checker.Closed();
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return result == BRepCheck_NoError;
 
 		}
@@ -281,7 +281,7 @@ namespace Xbim
 			if (!IsValid) return nullptr;
 			gp_Trsf trans = XbimConvert::ToTransform(matrix3D);
 			BRepBuilderAPI_Transform gTran(this, trans, Standard_True);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimSolid(TopoDS::Solid(gTran.Shape()));
 		}
 
@@ -290,7 +290,7 @@ namespace Xbim
 			if (!IsValid) return nullptr;
 			gp_Trsf trans = XbimConvert::ToTransform(matrix3D);
 			BRepBuilderAPI_Transform gTran(this, trans, Standard_False);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimSolid(TopoDS::Solid(gTran.Shape()));
 		}
 
@@ -336,7 +336,7 @@ namespace Xbim
 		{
 			if (!IsValid || !toSection->IsValid) return XbimFaceSet::Empty;
 			XbimFace^ faceSection = dynamic_cast<XbimFace^>(toSection);
-			if (faceSection == nullptr)  throw gcnew System::ArgumentException("Only faces created by Xbim.OCC modules are supported", "toSection");
+			if (faceSection == nullptr)  throw gcnew ArgumentException("Only faces created by Xbim.OCC modules are supported", "toSection");
 
 			ShapeFix_ShapeTolerance fixTol;
 			fixTol.SetTolerance(faceSection, tolerance);
@@ -398,7 +398,7 @@ namespace Xbim
 		{
 			if (!IsValid) return false;
 			BRepCheck_Analyzer analyser(*pShell, Standard_True);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return analyser.IsValid() == Standard_True;
 		}
 
@@ -417,14 +417,14 @@ namespace Xbim
 			{
 				gp_GTrsf trans = XbimConvert::ToTransform(nonUniform);
 				BRepBuilderAPI_GTransform tr(this, trans, Standard_True); //make a copy of underlying shape
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gcnew XbimShell(TopoDS::Shell(tr.Shape()), Tag);
 			}
 			else
 			{
 				gp_Trsf trans = XbimConvert::ToTransform(transformation);
 				BRepBuilderAPI_Transform tr(this, trans, Standard_False); //do not make a copy of underlying shape
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gcnew XbimShell(TopoDS::Shell(tr.Shape()), Tag);
 			}
 		}
@@ -478,7 +478,7 @@ namespace Xbim
 			return gcnew XbimSolid(); //return an invalid solid if the shell is not valid
 		}
 
-		void XbimShell::SaveAsBrep(System::String^ fileName)
+		void XbimShell::SaveAsBrep(String^ fileName)
 		{
 			if (IsValid)
 			{

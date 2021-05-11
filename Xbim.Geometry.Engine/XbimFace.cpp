@@ -1,4 +1,6 @@
-
+#include "XbimFace.h"
+#include "XbimOccWriter.h"
+#include "XbimCurve.h"
 #include <BRepBuilderAPI_Transform.hxx>
 #include <BRepBuilderAPI_GTransform.hxx>
 #include <BRepTools_WireExplorer.hxx>
@@ -59,9 +61,7 @@
 #include <GeomAPI.hxx>
 #include <GeomConvert.hxx>
 
-#include "XbimFace.h"
-#include "XbimOccWriter.h"
-#include "XbimCurve.h"
+
 using namespace System::Linq;
 
 namespace Xbim
@@ -71,13 +71,13 @@ namespace Xbim
 		/*Ensures native pointers are deleted and garbage collected*/
 		void XbimFace::InstanceCleanup()
 		{
-			System::IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, System::IntPtr::Zero);
-			if (temp != System::IntPtr::Zero)
+			IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, IntPtr::Zero);
+			if (temp != IntPtr::Zero)
 				delete (TopoDS_Face*)(temp.ToPointer());
 			System::GC::SuppressFinalize(this);
 		}
 
-		System::String^ XbimFace::GetBuildFaceErrorMessage(BRepBuilderAPI_FaceError err)
+		String^ XbimFace::GetBuildFaceErrorMessage(BRepBuilderAPI_FaceError err)
 		{
 			switch (err)
 			{
@@ -490,7 +490,7 @@ namespace Xbim
 				}
 				catch (Standard_Failure sf)
 				{
-					System::String^ err = gcnew System::String(sf.GetMessageString());
+					String^ err = gcnew String(sf.GetMessageString());
 					XbimGeometryCreator::LogWarning(logger, surface, "Failed to create  IfcFaceSurface: " + err);
 
 					delete pFace;
@@ -714,7 +714,7 @@ namespace Xbim
 		void XbimFace::Init(IXbimWire^ xbimWire, XbimPoint3D pointOnFace, XbimVector3D faceNormal, ILogger^ /*logger*/)
 		{
 			if (!dynamic_cast<XbimWire^>(xbimWire))
-				throw gcnew System::ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
+				throw gcnew ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
 			XbimWire^ wire = (XbimWire^)xbimWire;
 			if (wire->IsValid && !faceNormal.IsInvalid())
 			{
@@ -730,13 +730,13 @@ namespace Xbim
 				pFace = new TopoDS_Face();
 				*pFace = resultFace;
 			}
-			System::GC::KeepAlive(xbimWire);
+			GC::KeepAlive(xbimWire);
 		}
 
 		void XbimFace::Init(IXbimWire^ xbimWire, bool isPlanar, double precision, int entityLabel, ILogger^ logger)
 		{
 			if (!dynamic_cast<XbimWire^>(xbimWire))
-				throw gcnew System::ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
+				throw gcnew ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
 			XbimWire^ wire = (XbimWire^)xbimWire;
 			double currentPrecision = precision;
 			if (wire->IsValid)
@@ -776,7 +776,7 @@ namespace Xbim
 					}
 				}
 			}
-			System::GC::KeepAlive(xbimWire);
+			GC::KeepAlive(xbimWire);
 		}
 
 		void XbimFace::Init(IIfcFace^ ifcFace, ILogger^ logger, bool useVertexMap, TopTools_DataMapOfIntegerShape& vertexMap)
@@ -1008,7 +1008,7 @@ namespace Xbim
 		{
 			IXbimWire^ outerBound = face->OuterBound;
 			XbimWire^ outerWire = dynamic_cast<XbimWire^>(outerBound);
-			if (outerWire == nullptr) throw gcnew System::ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
+			if (outerWire == nullptr) throw gcnew ArgumentException("Only IXbimWires created by Xbim.OCC modules are supported", "xbimWire");
 			XbimVector3D n = face->Normal;
 			XbimPoint3D pw = outerWire->Vertices->First->VertexGeometry;
 			gp_Pln plane(gp_Pnt(pw.X, pw.Y, pw.Z), gp_Dir(n.X, n.Y, n.Z));
@@ -1049,11 +1049,10 @@ namespace Xbim
 				if (wire->IsValid)
 				{
 					double tolerance = profile->Model->ModelFactors->Precision;
-
 					XbimVector3D n = wire->Normal;
 					if (n.IsInvalid()) //it is not an area
 					{
-						XbimGeometryCreator::LogWarning(logger, profile, "Face cannot be built with a profile that has no area.");
+						XbimGeometryCreator::LogWarning(logger, profile, "Face cannot be built with a profile that has no area (invalid normal).");
 						return;
 					}
 					else
@@ -1194,7 +1193,7 @@ namespace Xbim
 						FTol.SetTolerance(loop, currentFaceTolerance, TopAbs_WIRE);
 						goto TryBuildFace;
 					}
-					System::String^ errMsg = XbimFace::GetBuildFaceErrorMessage(err);
+					String^ errMsg = XbimFace::GetBuildFaceErrorMessage(err);
 					XbimGeometryCreator::LogWarning(logger, profile, "Invalid bound, {0}. Face discarded", errMsg);
 					return;
 				}
@@ -1232,6 +1231,11 @@ namespace Xbim
 						try //it is possible the inner loop is just a closed wire with zero area when a normal is calculated, this will throw an excpetion and the void is invalid
 						{
 							XbimVector3D n = innerWire->Normal;
+							if (n.IsInvalid())
+							{
+								XbimGeometryCreator::LogWarning(logger, profile, "Invalid void. Inner bound ignored", curve->EntityLabel);
+								continue;
+							}
 							bool needInvert = n.DotProduct(tn) > 0;
 							if (needInvert) //inner wire should be reverse of outer wire
 								innerWire->Reverse();
@@ -1254,11 +1258,11 @@ namespace Xbim
 									goto TryBuildLoop;
 								}
 
-								System::String^ errMsg = XbimFace::GetBuildFaceErrorMessage(loopErr);
+								String^ errMsg = XbimFace::GetBuildFaceErrorMessage(loopErr);
 								XbimGeometryCreator::LogWarning(logger, profile, "Invalid void, {0}. IfcCurve #{1} could not be added. Inner bound ignored", errMsg, curve->EntityLabel);
 							}
 						}
-						catch (System::Exception^ e)
+						catch (Exception^ e)
 						{
 							XbimGeometryCreator::LogWarning(logger, profile, "Invalid profile void, {0}. IfcCurve #{1} could not be added. Inner bound ignored", e->Message, curve->EntityLabel);
 						}
@@ -1484,8 +1488,8 @@ namespace Xbim
 				return Init((IIfcCylindricalSurface^)surface, logger);
 			else
 			{
-				System::Type^ type = surface->GetType();
-				throw(gcnew System::NotImplementedException(System::String::Format("XbimFace. BuildFace of type {0} is not implemented", type->Name)));
+				Type^ type = surface->GetType();
+				throw(gcnew NotImplementedException(String::Format("XbimFace. BuildFace of type {0} is not implemented", type->Name)));
 			}
 
 		}
@@ -1508,8 +1512,8 @@ namespace Xbim
 		{
 			if (dynamic_cast<IIfcBSplineSurfaceWithKnots^>(surface))
 				return Init((IIfcBSplineSurfaceWithKnots^)surface, logger);
-			System::Type^ type = surface->GetType();
-			throw(gcnew System::NotImplementedException(System::String::Format("XbimFace. BuildFace of type {0} is not implemented", type->Name)));
+			Type^ type = surface->GetType();
+			throw(gcnew NotImplementedException(String::Format("XbimFace. BuildFace of type {0} is not implemented", type->Name)));
 		}
 
 		void XbimFace::Init(IIfcBSplineSurfaceWithKnots^ surface, ILogger^ logger)
@@ -1780,33 +1784,38 @@ namespace Xbim
 					//trim 1 and trim 2 will be cartesian points
 					IIfcCartesianPoint^ trim1 = dynamic_cast<IIfcCartesianPoint^>(Enumerable::FirstOrDefault(tc->Trim1));
 					IIfcCartesianPoint^ trim2 = dynamic_cast<IIfcCartesianPoint^>(Enumerable::FirstOrDefault(tc->Trim2));
-					if (trim1 != nullptr && trim2 != nullptr)
-					{
-						gp_Pnt p1 = XbimConvert::GetPoint3d(trim1);
-						gp_Pnt p2 = XbimConvert::GetPoint3d(trim2);
-						//there are two solutions A, B
-						//calc solution A
-						double radsq = circle->Radius * circle->Radius;
-						double qX = System::Math::Sqrt(((p2.X() - p1.X()) * (p2.X() - p1.X())) + ((p2.Y() - p1.Y()) * (p2.Y() - p1.Y())));
-						double x3 = (p1.X() + p2.X()) / 2;
-						double centreX = x3 - System::Math::Sqrt(radsq - ((qX / 2) * (qX / 2))) * ((p1.Y() - p2.Y()) / qX);
+					gp_Pnt p1 = XbimConvert::GetPoint3d(trim1);
+					gp_Pnt p2 = XbimConvert::GetPoint3d(trim2);
+					//there are two solutions A, B
+					//calc solution A
+					double radsq = circle->Radius * circle->Radius;
+					double qX = Math::Sqrt(((p2.X() - p1.X()) * (p2.X() - p1.X())) + ((p2.Y() - p1.Y()) * (p2.Y() - p1.Y())));
+					double x3 = (p1.X() + p2.X()) / 2;
+					double centreX = x3 - Math::Sqrt(radsq - ((qX / 2) * (qX / 2))) * ((p1.Y() - p2.Y()) / qX);
 
-						double qY = System::Math::Sqrt(((p2.X() - p1.X()) * (p2.X() - p1.X())) + ((p2.Y() - p1.Y()) * (p2.Y() - p1.Y())));
-						double y3 = (p1.Y() + p2.Y()) / 2;
-						double centreY = y3 - System::Math::Sqrt(radsq - ((qY / 2) * (qY / 2))) * ((p2.X() - p1.X()) / qY);
+					double qY = Math::Sqrt(((p2.X() - p1.X()) * (p2.X() - p1.X())) + ((p2.Y() - p1.Y()) * (p2.Y() - p1.Y())));
 
-						ITransaction^ txn = sLin->Model->BeginTransaction("Fix Centre");
-						
-						IIfcPlacement^ p = dynamic_cast<IIfcPlacement^>(circle->Position);
-						p->Location->Coordinates[0] = centreX;
-						p->Location->Coordinates[1] = centreY;
-						p->Location->Coordinates[2] = 0;
+					double y3 = (p1.Y() + p2.Y()) / 2;
 
-						xbasisEdge1 = gcnew XbimEdge(sLin->SweptCurve, logger);
-						txn->RollBack();
-						isFixed = true;
-					}
+					double centreY = y3 - Math::Sqrt(radsq - ((qY / 2) * (qY / 2))) * ((p2.X() - p1.X()) / qY);
+
+
+
+					ITransaction^ txn = sLin->Model->BeginTransaction("Fix Centre");
+
+
+					IIfcPlacement^ p = dynamic_cast<IIfcPlacement^>(circle->Position);
+
+					p->Location->Coordinates[0] = centreX;
+					p->Location->Coordinates[1] = centreY;
+					p->Location->Coordinates[2] = 0;
+
+					xbasisEdge1 = gcnew XbimEdge(sLin->SweptCurve, logger);
+					txn->RollBack();
+					isFixed = true;
 				}
+
+
 			}
 			if (!isFixed) //just build it
 				xbasisEdge1 = gcnew XbimEdge(sLin->SweptCurve, logger);
@@ -1848,8 +1857,8 @@ namespace Xbim
 			}
 			catch (Standard_Failure f)
 			{
-				System::String^ err = gcnew System::String(f.GetMessageString());
-				throw gcnew System::Exception("General failure in advanced face building: " + err);
+				String^ err = gcnew String(f.GetMessageString());
+				throw gcnew Exception("General failure in advanced face building: " + err);
 			}
 		}
 		void XbimFace::ReParamCurve(TopoDS_Edge& basisEdge)
@@ -1938,7 +1947,7 @@ namespace Xbim
 		{
 			if (pFace == nullptr) return nullptr;
 			TopoDS_Wire outerWire = BRepTools::OuterWire(*pFace);//get the outer loop
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			if (outerWire.IsNull()) //check if this is a half space
 			{
 				return nullptr;
@@ -1967,7 +1976,7 @@ namespace Xbim
 				if (!wireEx.Current().IsEqual(outerWire))
 					wires.Append(TopoDS::Wire(wireEx.Current()));
 			}
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimWireSet(wires);
 		}
 
@@ -1980,7 +1989,7 @@ namespace Xbim
 			Standard_Real srXmin, srYmin, srZmin, srXmax, srYmax, srZmax;
 			if (pBox.IsVoid()) return XbimRect3D::Empty;
 			pBox.Get(srXmin, srYmin, srZmin, srXmax, srYmax, srZmax);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return XbimRect3D(srXmin, srYmin, srZmin, (srXmax - srXmin), (srYmax - srYmin), (srZmax - srZmin));
 		}
 
@@ -1989,14 +1998,14 @@ namespace Xbim
 			BRepBuilderAPI_Copy copier(this);
 			BRepBuilderAPI_Transform gTran(copier.Shape(), XbimConvert::ToTransform(matrix3D));
 			TopoDS_Face temp = TopoDS::Face(gTran.Shape());
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimFace(temp);
 		}
 
 		IXbimGeometryObject^ XbimFace::TransformShallow(XbimMatrix3D matrix3D)
 		{
 			TopoDS_Face face = TopoDS::Face(pFace->Moved(XbimConvert::ToTransform(matrix3D)));
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimFace(face);
 		}
 
@@ -2009,7 +2018,7 @@ namespace Xbim
 			if (wireEx.More()) return false; //it has holes
 			TopTools_IndexedMapOfShape map;
 			TopExp::MapShapes(*pFace, TopAbs_VERTEX, map);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			if (map.Extent() == 4 || map.Extent() == 3) return true;
 			return false;
 		}
@@ -2021,7 +2030,7 @@ namespace Xbim
 			{
 				GProp_GProps gProps;
 				BRepGProp::SurfaceProperties(*pFace, gProps);
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gProps.Mass();
 			}
 			else
@@ -2034,7 +2043,7 @@ namespace Xbim
 			{
 				GProp_GProps gProps;
 				BRepGProp::LinearProperties(*pFace, gProps);
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gProps.Mass();
 			}
 			else
@@ -2053,7 +2062,7 @@ namespace Xbim
 			prop.Bounds(u1, u2, v1, v2);
 			prop.Normal((u1 + u2) / 2.0, (v1 + v2) / 2.0, centre, normalDir);
 			XbimVector3D vec(normalDir.X(), normalDir.Y(), normalDir.Z());
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return vec.Normalized();
 		}
 
@@ -2081,7 +2090,7 @@ namespace Xbim
 			prop.Bounds(u1, u2, v1, v2);
 			prop.Normal((u1 + u2) / 2.0, (v1 + v2) / 2.0, centre, normalDir);
 			XbimPoint3D loc(centre.X(), centre.Y(), centre.Z());
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return loc;
 		}
 
@@ -2091,7 +2100,7 @@ namespace Xbim
 			Handle(Geom_Surface) surf = BRep_Tool::Surface(*pFace); //the surface
 			Standard_Real tol = BRep_Tool::Tolerance(*pFace);
 			GeomLib_IsPlanarSurface ps(surf, tol);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return ps.IsPlanar() == Standard_True; //see if we have a planar or curved surface, if planar we need only worry about one normal
 
 		}
@@ -2119,7 +2128,7 @@ namespace Xbim
 					}
 				}
 			}
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return true;
 		}
 
@@ -2144,7 +2153,7 @@ namespace Xbim
 		int XbimFace::GetHashCode()
 		{
 			if (!IsValid) return 0;
-			return pFace->HashCode(System::Int32::MaxValue);
+			return pFace->HashCode(Int32::MaxValue);
 		}
 
 		bool XbimFace::operator ==(XbimFace^ left, XbimFace^ right)
@@ -2165,7 +2174,7 @@ namespace Xbim
 			return !(left == right);
 		}
 
-		void XbimFace::SaveAsBrep(System::String^ fileName)
+		void XbimFace::SaveAsBrep(String^ fileName)
 		{
 			if (IsValid)
 			{
@@ -2211,12 +2220,12 @@ namespace Xbim
 		{
 			if (!IsValid) return false;
 			XbimWire^ wire = dynamic_cast<XbimWire^>(innerWire);
-			if (wire == nullptr) throw gcnew System::ArgumentException("Only IXbimWires created bu Xbim.OCC modules are supported", "xbimWire");
+			if (wire == nullptr) throw gcnew ArgumentException("Only IXbimWires created bu Xbim.OCC modules are supported", "xbimWire");
 			BRepBuilderAPI_MakeFace faceMaker(*pFace);
 			faceMaker.Add(wire);
 			if (!faceMaker.IsDone()) return false;
 			*pFace = faceMaker.Face();
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return true;
 		}
 
@@ -2227,7 +2236,7 @@ namespace Xbim
 			const Handle(Geom_Surface)& surface = BRep_Tool::Surface(*pFace);
 			gp_Pnt p;
 			surface->D0(u, v, p);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return XbimPoint3D(p.X(), p.Y(), p.Z());
 		}
 
@@ -2250,14 +2259,14 @@ namespace Xbim
 			{
 				gp_GTrsf trans = XbimConvert::ToTransform(nonUniform);
 				BRepBuilderAPI_GTransform tr(this, trans, Standard_True); //make a copy of underlying shape
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gcnew XbimFace(TopoDS::Face(tr.Shape()), Tag);
 			}
 			else
 			{
 				gp_Trsf trans = XbimConvert::ToTransform(transformation);
 				BRepBuilderAPI_Transform tr(this, trans, Standard_False); //do not make a copy of underlying shape
-				System::GC::KeepAlive(this);
+				GC::KeepAlive(this);
 				return gcnew XbimFace(TopoDS::Face(tr.Shape()), Tag);
 			}
 		}

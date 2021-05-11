@@ -1,14 +1,13 @@
 #pragma once
-
+#include "XbimOccShape.h"
+#include "XbimWire.h"
+#include "XbimWireSet.h"
 #include <TopoDS_Face.hxx>
 #include <BRepBuilderAPI_FaceError.hxx>
 #include <Geom_Surface.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <TopTools_DataMapOfIntegerShape.hxx>
 #include <vector>
-#include "XbimOccShape.h"
-#include "XbimWire.h"
-#include "XbimWireSet.h"
 using namespace System::Collections::Generic;
 using namespace Xbim::Ifc4::Interfaces;
 using namespace Xbim::Common::Geometry;
@@ -20,11 +19,11 @@ namespace Xbim
 		{
 		private:
 			
-			System::IntPtr ptrContainer;
+			IntPtr ptrContainer;
 			virtual property TopoDS_Face* pFace
 			{
 				TopoDS_Face* get() sealed { return (TopoDS_Face*)ptrContainer.ToPointer(); }
-				void set(TopoDS_Face* val)sealed { ptrContainer = System::IntPtr(val); }
+				void set(TopoDS_Face* val)sealed { ptrContainer = IntPtr(val); }
 			}
 			void InstanceCleanup();
 
@@ -65,7 +64,7 @@ namespace Xbim
 			!XbimFace(){ InstanceCleanup(); }
 
 			//error logging
-			static System::String^ GetBuildFaceErrorMessage(BRepBuilderAPI_FaceError err);
+			static String^ GetBuildFaceErrorMessage(BRepBuilderAPI_FaceError err);
 
 #pragma region operators
 			
@@ -99,7 +98,7 @@ namespace Xbim
 			virtual IXbimGeometryObject^ Transform(XbimMatrix3D matrix3D) override;
 			virtual IXbimGeometryObject^ TransformShallow(XbimMatrix3D matrix3D)override;
 			virtual property bool IsQuadOrTriangle{bool get(); }
-			virtual void SaveAsBrep(System::String^ fileName);
+			virtual void SaveAsBrep(String^ fileName);
 			virtual property XbimPoint3D Location {XbimPoint3D get(); }
 #pragma endregion
 

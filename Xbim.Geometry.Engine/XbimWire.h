@@ -1,16 +1,16 @@
 #pragma once
-
+#include "XbimOccShape.h"
+#include "XbimEdge.h"
+#include "XbimVertex.h"
 #include <TopoDS_Wire.hxx>
 #include <gp_Pnt.hxx>
 #include <TopoDS_Edge.hxx>
 #include <vector>
 #include <NCollection_Vector.hxx>
-#include <BRepBuilderAPI_MakeWire.hxx>
 #include "XbimConstraints.h"
-#include "XbimOccShape.h"
-#include "XbimEdge.h"
-#include "XbimVertex.h"
+#include <BRepBuilderAPI_MakeWire.hxx>
 
+using namespace System;
 using namespace System::Collections::Generic;
 using namespace Xbim::Ifc4::Interfaces;
 using namespace Xbim::Common::Geometry;
@@ -26,11 +26,11 @@ namespace Xbim
 			// Lock for preventing a usage of BRepOffsetAPI_MakeOffset.Perform(...) in a multi-threaded mode.
 			static Object^ _makeOffsetLock = gcnew Object();
 
-			System::IntPtr ptrContainer;
+			IntPtr ptrContainer;
 			virtual property TopoDS_Wire* pWire
 			{
 				TopoDS_Wire* get() sealed { return (TopoDS_Wire*)ptrContainer.ToPointer(); }
-				void set(TopoDS_Wire* val)sealed { ptrContainer = System::IntPtr(val); }
+				void set(TopoDS_Wire* val)sealed { ptrContainer = IntPtr(val); }
 			}
 			void InstanceCleanup();
 			void ModifyWireAddEdge(TopoDS_Wire& resultWire,
@@ -143,7 +143,7 @@ namespace Xbim
 			virtual property IXbimEdgeSet^ Edges {IXbimEdgeSet^ get(); }
 			virtual property IXbimVertexSet^ Vertices {IXbimVertexSet^ get(); }
 			virtual property IEnumerable<XbimPoint3D>^ Points {IEnumerable<XbimPoint3D>^ get(); }
-			//returns the normal of the loop using the Newell's normal algorithm
+			//returns the normal of the loop using the Newell's normal algorithm. WARNING: Always check success via the IsInvalid() method of returned instance.
 			virtual property XbimVector3D Normal {XbimVector3D get(); }
 			virtual property bool IsClosed {bool get() { return IsValid && pWire->Closed() == Standard_True; }; }
 			virtual property bool IsPlanar {bool get(); }

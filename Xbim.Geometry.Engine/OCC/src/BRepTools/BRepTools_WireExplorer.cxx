@@ -63,7 +63,10 @@ static Standard_Real GetNextParamOnPC(const Handle(Geom2d_Curve)& aPC,
 //function : BRepTools_WireExplorer
 //purpose  : 
 //=======================================================================
-BRepTools_WireExplorer::BRepTools_WireExplorer() 
+BRepTools_WireExplorer::BRepTools_WireExplorer()
+: myReverse(Standard_False),
+  myTolU(0.0),
+  myTolV(0.0)
 {
 }
 
@@ -154,7 +157,6 @@ void  BRepTools_WireExplorer::Init(const TopoDS_Wire& W,
 
   if (!myFace.IsNull())
   {
-    BRepTools::Update(myFace);
     TopLoc_Location aL;
     const Handle(Geom_Surface)& aSurf = BRep_Tool::Surface(myFace, aL);
     GeomAdaptor_Surface aGAS(aSurf);
@@ -751,9 +753,6 @@ Standard_Real GetNextParamOnPC(const Handle(Geom2d_Curve)& aPC,
 {
   Standard_Real result = ( reverse ) ? fP : lP;
   Standard_Real dP = Abs( lP - fP ) / 1000.; // was / 16.;
-  // Ensure incrememt is large enough to effect startPar
-  Standard_Real resolution = Abs(fP / Pow(2, 52));
-  dP = Max(dP, resolution);
   if( reverse )
     {
       Standard_Real startPar = fP;
