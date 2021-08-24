@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>1.1.8</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Voyager</Authors>
+    <Company>RIB DK</Company>
+    <Description>Extensions for XBim framework.</Description>
+    <PackageTags>xbim;extensions</PackageTags>
+    <RootNamespace>RIB.Extensions</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Geometry.Engine.Interop\Xbim.Geometry.Engine.Interop.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Ifc2x3\Xbim.Ifc2x3.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Ifc4\Xbim.Ifc4.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Ifc\Xbim.Ifc.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.IO.Esent\Xbim.IO.Esent.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.IO.MemoryModel\Xbim.IO.MemoryModel.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.ModelGeometry.Scene\Xbim.ModelGeometry.Scene.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Tessellator\Xbim.Tessellator.csproj">
+      <Private>true</Private>
+      <Pack>false</Pack>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Xbim.ModelGeometry.Scene\bin\$(Configuration)\$(TargetFramework)\Xbim.*.dll" LinkBase="runtimes/win-x64" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Private>true</Private>
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </None>
+    <None Include="..\Xbim.ModelGeometry.Scene\bin\$(Configuration)\$(TargetFramework)\Ijwhost.dll" LinkBase="runtimes/win-x64">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Private>true</Private>
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

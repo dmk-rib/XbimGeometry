@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>5.1.0-Rib</Version>
+    <AssemblyOriginatorKeyFile>..\XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <Title>Xbim IFC2x3</Title>
+    <Description>Provides supports the IFC2x3 schema.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj" />
+    <ProjectReference Include="..\Xbim.Ifc4\Xbim.Ifc4.csproj" />
+  </ItemGroup>
+ 
+</Project>

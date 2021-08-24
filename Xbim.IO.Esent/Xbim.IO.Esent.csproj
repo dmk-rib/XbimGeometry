@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>5.1.0-Rib</Version>
+    <AssemblyOriginatorKeyFile>..\XbimOpenSourceKeyFile.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <Company>Xbim Ltd.</Company>
+    <Title>Xbim IO for ESENT</Title>
+    <Description>Manages Ifc or STEP Models backed by the ESENT database. Windows only.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
+    <NoWarn>CS1572;CS1573;CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
+    <NoWarn>CS1572;CS1573;CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj" />
+    <ProjectReference Include="..\Xbim.IO.MemoryModel\Xbim.IO.MemoryModel.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- New Microsoft.Database.ManagedEsent is not signed -->
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Database.ManagedEsent" Version="2.0.1" />
+  </ItemGroup>
+</Project>
