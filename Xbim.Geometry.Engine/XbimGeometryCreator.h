@@ -66,13 +66,10 @@ namespace Xbim
 					IgnoreIfcSweptDiskSolidParams = false;
 				
 			}
-		protected:
+		public:
 			~XbimGeometryCreator()
 			{
 			}
-				
-		public:
-
 			
 			//Central point for logging all errors
 			static void LogInfo(ILogger^ logger, Object^ entity, System::String^ format, ... array<Object^>^ arg);

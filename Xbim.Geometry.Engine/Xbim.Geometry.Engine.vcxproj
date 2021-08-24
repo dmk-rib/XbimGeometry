@@ -275,22 +275,22 @@
     <Otherwise>
       <ItemGroup>
         <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Extensions.Logging">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.dll</HintPath>
         </Reference>
         <Reference Include="Xbim.Ifc4">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Ifc4.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Ifc4.dll</HintPath>
         </Reference>
         <Reference Include="Xbim.Ifc2x3">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Ifc2x3.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Ifc2x3.dll</HintPath>
         </Reference>
         <Reference Include="Xbim.Tessellator">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Tessellator.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Tessellator.dll</HintPath>
         </Reference>
         <Reference Include="Xbim.Common">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Common.dll</HintPath>
+          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Common.dll</HintPath>
         </Reference>
       </ItemGroup>
     </Otherwise>
@@ -299,6 +299,8 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <!-- Disable the .NET SDK error that prevents using SelfContained=true -->
+  <Target Name="_CheckForLanguageAndFeatureCombinationSupport"></Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
