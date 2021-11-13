@@ -8,7 +8,7 @@ bool XbimNativeApi::FixShell(TopoDS_Shell& shell, double timeOut, std::string& e
 	try
 	{
 		ShapeFix_Shell shellFixer(shell);
-		Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeOut);
+		Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeOut);	
 		if (shellFixer.Perform(pi))
 		{
 			shell = shellFixer.Shell();

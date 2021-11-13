@@ -1,4 +1,9 @@
-
+#include "XbimShellSet.h"
+#include "XbimSolid.h"
+#include "XbimSolidSet.h"
+#include "XbimGeometryCreator.h"
+#include "XbimGeometryObjectSet.h"
+#include "XbimConvert.h"
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopExp.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
@@ -7,12 +12,7 @@
 #include <BRepBndLib.hxx>
 #include <Bnd_Array1OfBox.hxx>
 #include <BRepBuilderAPI_Sewing.hxx>
-#include "XbimShellSet.h"
-#include "XbimSolid.h"
-#include "XbimSolidSet.h"
-#include "XbimGeometryCreator.h"
-#include "XbimGeometryObjectSet.h"
-#include "XbimConvert.h"
+using namespace System;
 namespace Xbim
 {
 	namespace Geometry
@@ -124,7 +124,7 @@ namespace Xbim
 
 		void XbimShellSet::Union(double /*tolerance*/)
 		{
-			throw gcnew System::NotImplementedException("XbimShellSet::Union");
+			throw gcnew NotImplementedException("XbimShellSet::Union");
 		}
 
 		IXbimGeometryObject ^ XbimShellSet::Transformed(IIfcCartesianTransformationOperator ^ transformation)

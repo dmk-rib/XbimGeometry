@@ -1,10 +1,8 @@
 #pragma once
-
-#include <TopoDS_Vertex.hxx>
-#include <BRep_Tool.hxx>
-
 #include "XbimOccShape.h"
 #include "XbimPoint3DWithTolerance.h"
+#include <TopoDS_Vertex.hxx>
+#include <BRep_Tool.hxx>
 using namespace Xbim::Common::Geometry;
 using namespace Xbim::Ifc4::Interfaces;
 namespace Xbim
@@ -14,11 +12,11 @@ namespace Xbim
 		ref class XbimVertex : IXbimVertex, XbimOccShape
 		{
 		protected:
-			System::IntPtr ptrContainer;
+			IntPtr ptrContainer;
 			virtual property TopoDS_Vertex* pVertex
 			{
 				TopoDS_Vertex* get() sealed { return (TopoDS_Vertex*)ptrContainer.ToPointer(); }
-				void set(TopoDS_Vertex* val)sealed { ptrContainer = System::IntPtr(val); }
+				void set(TopoDS_Vertex* val)sealed { ptrContainer = IntPtr(val); }
 			}
 			void InstanceCleanup();
 		public:

@@ -65,7 +65,26 @@ public:
   }
 
   //! Implementation of inspection method
-  Standard_EXPORT NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget); 
+  Standard_EXPORT NCollection_CellFilter_Action Inspect (const Standard_Integer theTarget);
+
+  // //! Returns hash code for this cell, in the range [1, theUpperBound]
+  // //! @param theUpperBound the upper bound of the range a computing hash code must be within
+  // //! @return a computed hash code, in the range [1, theUpperBound]
+  // Standard_Integer HashCode(const Standard_Integer theUpperBound) const
+  // {
+  //     // // number of bits per each dimension in the hash code
+  //     // const std::size_t aDim = index.Size();
+  //     // const std::size_t aShiftBits = (BITS(long) - 1) / aDim;
+  //     // unsigned int      aCode = 0;
+  //     //
+  //     // for (std::size_t i = 0; i < aDim; ++i)
+  //     // {
+  //     //     aCode = (aCode << aShiftBits) ^ index[i];
+  //     // }
+  //     //
+  //     // return ::HashCode(aCode, theUpperBound);
+  //     return 0;
+  // }
 
 private:
   Standard_Real myTol;

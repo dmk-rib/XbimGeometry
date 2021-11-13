@@ -1,4 +1,9 @@
-
+#include "XbimSolidSet.h"
+#include "XbimShellSet.h"
+#include "XbimCompound.h"
+#include "XbimGeometryCreator.h"
+#include "XbimOccWriter.h"
+#include "XbimProgressMonitor.h"
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopExp.hxx>
 #include <BRepTools.hxx>
@@ -7,22 +12,16 @@
 #include <BRepAlgoAPI_Cut.hxx>
 #include <ShapeFix_ShapeTolerance.hxx>
 #include <BRepPrimAPI_MakePrism.hxx>
-#include <BRepCheck_Analyzer.hxx>
-#include <ShapeFix_Shape.hxx>
-#include <ShapeUpgrade_UnifySameDomain.hxx>
-
-#include <BRepBuilderAPI_MakeSolid.hxx>
-#include <BOPAlgo_PaveFiller.hxx>
-#include <BOPAlgo_BOP.hxx>
+#include "XbimConvert.h"
+#include "BRepCheck_Analyzer.hxx"
+#include "ShapeFix_Shape.hxx"
+#include "ShapeUpgrade_UnifySameDomain.hxx"
+#include "BRepBuilderAPI_MakeSolid.hxx"
+#include "BOPAlgo_PaveFiller.hxx"
+#include "BOPAlgo_BOP.hxx"
 #include <OSD_OpenFile.hxx>
 #include <algorithm>
-#include "XbimConvert.h"
-#include "XbimSolidSet.h"
-#include "XbimShellSet.h"
-#include "XbimCompound.h"
-#include "XbimGeometryCreator.h"
-#include "XbimOccWriter.h"
-#include "XbimProgressMonitor.h"
+
 using namespace std;
 
 using namespace System::Linq;
@@ -33,9 +32,9 @@ namespace Xbim
 	{
 
 
-		System::String^ XbimSolidSet::ToBRep::get()
+		String^ XbimSolidSet::ToBRep::get()
 		{
-			if (!IsValid) return System::String::Empty;
+			if (!IsValid) return String::Empty;
 			std::ostringstream oss;
 			BRep_Builder b;
 			TopoDS_Compound comp;
@@ -49,7 +48,7 @@ namespace Xbim
 				}
 			}
 			BRepTools::Write(comp, oss);
-			return gcnew System::String(oss.str().c_str());
+			return gcnew String(oss.str().c_str());
 		}
 
 		XbimSolidSet::XbimSolidSet(const TopoDS_Shape& shape)
@@ -92,7 +91,7 @@ namespace Xbim
 					solids->Add(gcnew XbimSolid(s));
 				}*/
 			}
-			System::GC::KeepAlive(shape);
+			GC::KeepAlive(shape);
 		}
 
 		XbimSolidSet::XbimSolidSet()
@@ -285,7 +284,7 @@ namespace Xbim
 		IXbimSolidSet^ XbimSolidSet::Range(int start, int count)
 		{
 			XbimSolidSet^ ss = gcnew XbimSolidSet();
-			for (int i = start; i < System::Math::Min(solids->Count, count); i++)
+			for (int i = start; i < Math::Min(solids->Count, count); i++)
 			{
 				ss->Add(solids[i]);
 			}
@@ -492,8 +491,16 @@ namespace Xbim
 				aBOP.SetNonDestructive(true);
 				aBOP.SetFuzzyValue(fuzzyTol);
 				
+				
+				//// todo: multiple boolean timeout has been disabled
+				//// what's the relatinoship between scope and monitor?
 				Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeout);
-				aBOP.SetProgressIndicator(pi);
+				
+				// todo: [RIB] find a way to reenable this
+				// pi->StartTimer();
+				// Message_ProgressScope scope(pi->Start(), "MultipleOperations", shapeTools.Size());
+				// aBOP.SetProgressIndicator(scope);
+				
 				TopoDS_Shape aR;
 
 
@@ -562,8 +569,8 @@ namespace Xbim
 					fixer.SetPrecision(tolerance);
 					try
 					{
-						Handle(XbimProgressMonitor) pi2 = new XbimProgressMonitor(timeout);
-						if (fixer.Perform(pi2))
+						Handle(XbimProgressMonitor) pi2 = new XbimProgressMonitor(timeout);						
+						if (fixer.Perform() && pi2->Start())
 						{
 							result = fixer.Shape();
 							retVal = BOOLEAN_SUCCESS;
@@ -649,7 +656,7 @@ namespace Xbim
 					solidResults->Add(resultSolids);
 				}
 
-				System::String^ msg = "";
+				String^ msg = "";
 				switch (success)
 				{
 				case BOOLEAN_PARTIALSUCCESSBADTOPOLOGY:
@@ -667,7 +674,7 @@ namespace Xbim
 				default:
 					break;
 				}
-				if (!System::String::IsNullOrWhiteSpace(msg))
+				if (!String::IsNullOrWhiteSpace(msg))
 					XbimGeometryCreator::LogWarning(logger, nullptr, msg);
 				if (success <= 0)
 					throw gcnew XbimGeometryException(msg);
@@ -1021,7 +1028,7 @@ namespace Xbim
 			{
 				IIfcBooleanResult^ booleanResult = dynamic_cast<IIfcBooleanResult^>(IIfcSolid->TreeRootExpression);
 				if (booleanResult != nullptr) return Init(booleanResult, logger);
-				throw gcnew System::NotImplementedException(System::String::Format("IIfcCsgSolid of Type {0} in entity #{1} is not implemented", IIfcSolid->GetType()->Name, IIfcSolid->EntityLabel));
+				throw gcnew NotImplementedException(String::Format("IIfcCsgSolid of Type {0} in entity #{1} is not implemented", IIfcSolid->GetType()->Name, IIfcSolid->EntityLabel));
 
 			}
 		}
@@ -1061,7 +1068,7 @@ namespace Xbim
 							solidSet->Add(s);
 					}
 				}
-				catch (System::Exception ^ e)
+				catch (Exception ^ e)
 				{
 					XbimGeometryCreator::LogError(logger, solid, "Failed to clip #{0} with #{1}. {2}", solid->EntityLabel, bOp->EntityLabel, e->Message);
 				}
@@ -1077,7 +1084,7 @@ namespace Xbim
 						solids->AddRange(xbimSolidSet);
 					}
 				}
-				catch (System::Exception ^ e)
+				catch (Exception ^ e)
 				{
 					XbimGeometryCreator::LogWarning(logger, solid, "Failed to clip #{0} with #{1}. {2}", solid->FirstOperand->EntityLabel, solid->SecondOperand->EntityLabel, e->Message);
 				}
@@ -1223,7 +1230,7 @@ namespace Xbim
 				}
 				//XbimOccWriter::Write(result, "c:/tmp/bop" + boolOp->ToString()->Replace(";","") +".txt");
 			}
-			catch (System::Exception ^ e)
+			catch (Exception ^ e)
 			{
 				XbimGeometryCreator::LogError(logger, boolOp, "Failed to perform boolean result from #{0} with #{1}. {2}", boolOp->FirstOperand->EntityLabel, boolOp->SecondOperand->EntityLabel, e->Message);
 				solids->AddRange(left);; //return the left operand
