@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RIB.Bim.Runner.Light": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -1352,7 +1352,6 @@ namespace Xbim.ModelGeometry.Scene
             try
             {
                 
-
                 //   int c = 0;
                 //contextHelper.ParallelOptions.MaxDegreeOfParallelism = 1;
                 Parallel.ForEach(contextHelper.ProductShapeIds, contextHelper.ParallelOptions, (shapeId) =>
@@ -1501,70 +1500,6 @@ namespace Xbim.ModelGeometry.Scene
             Debug.Assert(contextHelper.ProductShapeIds.Count == processed.Count);
             if (progDelegate != null) progDelegate(101, "WriteShapeGeometries, (" + localTally + " written)");
         }
-
-        //private IXbimGeometryObject CallWithTimeout(IIfcGeometricRepresentationItem shape, ILogger logger, int booleanTimeOutMilliSeconds)
-        //{
-        //    Thread threadToKill = null;
-        //    Func<IXbimGeometryObject> wrappedAction = () =>
-        //    {
-        //        threadToKill = Thread.CurrentThread;
-        //        try
-        //        {
-        //            return Engine.Create(shape, logger);
-        //        }
-        //        catch (ThreadAbortException)
-        //        {
-        //            _logger.LogWarning("Thread aborted due to timeout");
-        //            Thread.ResetAbort();// cancel hard aborting, lets to finish it nicely.
-        //            return null;
-        //        }
-
-        //    };
-
-        //    IAsyncResult result = wrappedAction.BeginInvoke(null, null);
-        //    if (result.AsyncWaitHandle.WaitOne(booleanTimeOutMilliSeconds))
-        //    {
-        //        var res = wrappedAction.EndInvoke(result);
-        //        result.AsyncWaitHandle.Close();
-        //        return res;
-        //    }
-        //    else
-        //    {
-        //        threadToKill?.Abort();
-        //        throw new TimeoutException();
-        //    }
-        //}
-        //private IXbimGeometryObjectSet CutWithTimeOut(IXbimGeometryObjectSet elementGeom, IXbimSolidSet cutGeometries, double precision, int booleanTimeOutMilliSeconds)
-        //{
-        //    Thread threadToKill = null;
-        //    Func<IXbimGeometryObjectSet> wrappedAction = () =>
-        //    {
-        //        try
-        //        {
-        //            threadToKill = Thread.CurrentThread;
-        //            return elementGeom.Cut(cutGeometries, precision);
-        //        }
-        //        catch (ThreadAbortException)
-        //        {
-        //            _logger.LogWarning("Thread aborted due to timeout");
-        //            Thread.ResetAbort();// cancel hard aborting, lets to finish it nicely.
-        //            return null;
-        //        }
-        //    };
-
-        //    IAsyncResult result = wrappedAction.BeginInvoke(null, null);
-        //    if (result.AsyncWaitHandle.WaitOne(booleanTimeOutMilliSeconds))
-        //    {
-        //        var res = wrappedAction.EndInvoke(result);
-        //        result.AsyncWaitHandle.Close();
-        //        return res;
-        //    }
-        //    else
-        //    {
-        //        threadToKill?.Abort();
-        //        throw new TimeoutException();
-        //    }
-        //}
 
         private void WriteRegionsToStore(IIfcRepresentationContext context, IEnumerable<XbimBBoxClusterElement> elementsToCluster, IGeometryStoreInitialiser txn, XbimMatrix3D WorldCoordinateSystem)
         {

@@ -8,6 +8,7 @@
     <DelaySign>false</DelaySign>
     <Title>Xbim Tessellator</Title>
     <Description>Provides support for tessellating mesh geometries.</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj" />

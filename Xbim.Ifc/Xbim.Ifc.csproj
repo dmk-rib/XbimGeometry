@@ -13,6 +13,7 @@
 	    XbimReferencedModel
     </Description>
 	  <RootNamespace>Xbim.Ifc</RootNamespace>
+	  <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Properties\**" />

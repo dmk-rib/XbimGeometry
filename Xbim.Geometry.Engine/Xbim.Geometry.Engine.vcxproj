@@ -132,6 +132,7 @@
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;TKBO.lib;TKBOOL.lib;TKBRep.lib;TKernel.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKMath.lib;TKMesh.lib;TKOffset.lib;TKPrim.lib;TKShHealing.lib;TKTopAlgo.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\OCC\win64\vc14\bind\</AdditionalLibraryDirectories>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -236,18 +237,6 @@
         <Reference Include="Microsoft.Extensions.Logging">
           <HintPath>..\Xbim.Geometry.Packages\bin\x86\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.dll</HintPath>
         </Reference>
-        <Reference Include="Xbim.Ifc4">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x86\$(Configuration)\$(TargetFramework)\Xbim.Ifc4.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Ifc2x3">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x86\$(Configuration)\$(TargetFramework)\Xbim.Ifc2x3.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Tessellator">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x86\$(Configuration)\$(TargetFramework)\Xbim.Tessellator.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Common">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x86\$(Configuration)\$(TargetFramework)\Xbim.Common.dll</HintPath>
-        </Reference>
       </ItemGroup>
     </When>
     <When Condition="'$(ManagedPlatform)'=='x64'">
@@ -257,18 +246,6 @@
         </Reference>
         <Reference Include="Microsoft.Extensions.Logging">
           <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Ifc4">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Ifc4.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Ifc2x3">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Ifc2x3.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Tessellator">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Tessellator.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Common">
-          <HintPath>..\Xbim.Geometry.Packages\bin\x64\$(Configuration)\$(TargetFramework)\Xbim.Common.dll</HintPath>
         </Reference>
       </ItemGroup>
     </When>
@@ -280,27 +257,38 @@
         <Reference Include="Microsoft.Extensions.Logging">
           <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Microsoft.Extensions.Logging.dll</HintPath>
         </Reference>
-        <Reference Include="Xbim.Ifc4">
-          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Ifc4.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Ifc2x3">
-          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Ifc2x3.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Tessellator">
-          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Tessellator.dll</HintPath>
-        </Reference>
-        <Reference Include="Xbim.Common">
-          <HintPath>..\Xbim.Geometry.Packages\bin\$(Configuration)\$(TargetFramework)\Xbim.Common.dll</HintPath>
-        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj">
+      <Project>{9621891a-003e-49e8-83b5-13db9c182d27}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Geometry.Packages\Xbim.Geometry.Packages.csproj">
+      <Project>{29c6d76e-9200-4fa4-b785-7d5a90c965ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Ifc2x3\Xbim.Ifc2x3.csproj">
+      <Project>{f6e851d3-382f-4f74-b12e-2e09bd10700f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Ifc4\Xbim.Ifc4.csproj">
+      <Project>{64892f3e-156d-405e-b725-427d2e6c7e7d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbim.Tessellator\Xbim.Tessellator.csproj">
+      <Project>{b9d941a7-22ed-4d82-beea-9c4a13b81ead}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\RIB.Bim.Runner.Light\bin\Debug\net5.0\win-x64\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <!-- Disable the .NET SDK error that prevents using SelfContained=true -->
-  <Target Name="_CheckForLanguageAndFeatureCombinationSupport"></Target>
+  <Target Name="_CheckForLanguageAndFeatureCombinationSupport">
+  </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
