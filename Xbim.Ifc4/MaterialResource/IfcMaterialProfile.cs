@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xbim.Common;
 using Xbim.Common.Exceptions;
+using Xbim.Common.Step21;
 using Xbim.Ifc4.Interfaces;
 using Xbim.Ifc4.MaterialResource;
 //## Custom using statements
@@ -217,8 +218,16 @@ namespace Xbim.Ifc4.MaterialResource
 				case 3: 
 					_profile = (IfcProfileDef)(value.EntityVal);
 					return;
-				case 4: 
-					_priority = value.IntegerVal;
+				case 4:
+                    if (value.Type == StepParserType.Real && value.RealVal == 0.0)
+                    {
+                        _priority = (IfcInteger?) value.RealVal;
+                    }
+                    else
+                    {
+						_priority = value.IntegerVal;
+					}
+					
 					return;
 				case 5: 
 					_category = value.StringVal;
