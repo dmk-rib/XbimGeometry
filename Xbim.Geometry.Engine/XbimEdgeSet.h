@@ -1,9 +1,8 @@
 #pragma once
-
-#include <TopExp_Explorer.hxx>
-#include <TopoDS.hxx>
 #include "XbimEdge.h"
 #include "XbimWire.h"
+#include <TopExp_Explorer.hxx>
+#include <TopoDS.hxx>
 using namespace System::Collections::Generic;
 namespace Xbim
 {

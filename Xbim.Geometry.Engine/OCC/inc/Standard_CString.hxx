@@ -54,7 +54,8 @@ inline Standard_Integer HashCode (const Standard_CString theString,
                                   const Standard_Integer theUpperBound)
 {
 //  return (Abs( HashCodes( Value , Len ) ) % Upper ) + 1 ;
-  return HashCode (HashCodes (theString, theLength), theUpperBound);
+
+    return ::HashCode(HashCodes(theString, theLength), theUpperBound);
 }
 
 //! Returns Standard_True if two strings are equal

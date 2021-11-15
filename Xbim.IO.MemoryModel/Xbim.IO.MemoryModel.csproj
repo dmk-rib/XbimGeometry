@@ -7,6 +7,7 @@
     <DelaySign>false</DelaySign>
     <Title>Xbim IO for in-Memory Models</Title>
     <Description>Manages IFC or STEP Model backed by an in-memory representation</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj" />

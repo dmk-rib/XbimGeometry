@@ -1,9 +1,10 @@
-
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopExp.hxx>
 #include "XbimVertexSet.h"
 #include "XbimConvert.h"
+#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopExp.hxx>
 
+
+using namespace System;
 namespace Xbim
 {
 	namespace Geometry
@@ -98,7 +99,7 @@ namespace Xbim
 
 		void XbimVertexSet::Mesh(IXbimMeshReceiver ^ /*mesh*/, double /*precision*/, double /*deflection*/, double /*angle*/)
 		{
-			throw gcnew System::NotImplementedException("XbimVertexSet::Mesh");
+			throw gcnew NotImplementedException("XbimVertexSet::Mesh");
 		}
 
 

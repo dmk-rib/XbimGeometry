@@ -8,11 +8,18 @@
     <Company>Xbim Ltd.</Company>
     <Title>Xbim IO for ESENT</Title>
     <Description>Manages Ifc or STEP Models backed by the ESENT database. Windows only.</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
     <NoWarn>CS1572;CS1573;CS1591</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|x64'">
+    <NoWarn>CS1572;CS1573;CS1591</NoWarn>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
+    <NoWarn>CS1572;CS1573;CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|x64'">
     <NoWarn>CS1572;CS1573;CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>

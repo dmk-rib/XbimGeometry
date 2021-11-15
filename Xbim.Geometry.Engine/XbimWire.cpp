@@ -1,4 +1,11 @@
-
+#include "XbimWire.h"
+#include "XbimEdge.h"
+#include "XbimFace.h"
+#include "XbimGeometryCreator.h"
+#include "XbimConvert.h"
+#include "XbimEdgeSet.h"
+#include "XbimVertexSet.h"
+#include "XbimCompound.h"
 #include <BRepBuilderAPI_Transform.hxx>
 #include <BRepBuilderAPI_GTransform.hxx>
 #include <TopExp_Explorer.hxx>
@@ -66,15 +73,6 @@
 #include <Adaptor3d_HCurve.hxx>
 #include <BRepAdaptor_HCurve.hxx>
 #include <ShapeAnalysis_WireOrder.hxx>
-
-#include "XbimWire.h"
-#include "XbimEdge.h"
-#include "XbimFace.h"
-#include "XbimGeometryCreator.h"
-#include "XbimConvert.h"
-#include "XbimEdgeSet.h"
-#include "XbimVertexSet.h"
-#include "XbimCompound.h"
 using namespace Xbim::Common;
 using namespace System::Linq;
 // using namespace System::Diagnostics;
@@ -89,8 +87,8 @@ namespace Xbim
 		/*Ensures native pointers are deleted and garbage collected*/
 		void XbimWire::InstanceCleanup()
 		{
-			System::IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, System::IntPtr::Zero);
-			if (temp != System::IntPtr::Zero)
+			IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, IntPtr::Zero);
+			if (temp != IntPtr::Zero)
 				delete (TopoDS_Wire*)(temp.ToPointer());
 			System::GC::SuppressFinalize(this);
 		}
@@ -181,7 +179,7 @@ namespace Xbim
 		int XbimWire::GetHashCode()
 		{
 			if (!IsValid) return 0;
-			return pWire->HashCode(System::Int32::MaxValue);
+			return pWire->HashCode(Int32::MaxValue);
 		}
 
 		bool XbimWire::operator ==(XbimWire^ left, XbimWire^ right)
@@ -221,7 +219,7 @@ namespace Xbim
 			}
 			if (dynamic_cast<IIfcArbitraryProfileDefWithVoids^>(profile))
 			{
-				throw gcnew System::Exception("IfcArbitraryProfileDefWithVoids cannot be created as a wire, call the XbimFace method");
+				throw gcnew Exception("IfcArbitraryProfileDefWithVoids cannot be created as a wire, call the XbimFace method");
 			}
 			else
 			{
@@ -261,7 +259,7 @@ namespace Xbim
 					}
 					catch (Standard_Failure sf)
 					{
-						System::String^ err = gcnew System::String(sf.GetMessageString());
+						String^ err = gcnew String(sf.GetMessageString());
 						XbimGeometryCreator::LogWarning(logger, profile, "Invalid bound. Wire discarded: {0}", err);
 					}
 				}
@@ -344,11 +342,11 @@ namespace Xbim
 						if (cType == STANDARD_TYPE(Geom_Circle))
 						{
 							Handle(Geom_Circle) circ = Handle(Geom_Circle)::DownCast(c3dptr);
-							if (System::Math::Abs(circ->Radius() - offset) <= precision) //it could be the end
+							if (Math::Abs(circ->Radius() - offset) <= precision) //it could be the end
 							{
 								//make sure we are at a start or end point
-								if (System::Math::Abs(circ->Axis().Location().Distance(wStart) <= precision) ||
-									System::Math::Abs(circ->Axis().Location().Distance(wEnd) <= precision))
+								if (Math::Abs(circ->Axis().Location().Distance(wStart) <= precision) ||
+									Math::Abs(circ->Axis().Location().Distance(wEnd) <= precision))
 								{
 									gp_Pnt s, pe;
 									c3d->D0(start, s);
@@ -1170,7 +1168,7 @@ namespace Xbim
 		IXbimGeometryObject^ XbimWire::TransformShallow(XbimMatrix3D matrix3D)
 		{
 			TopoDS_Wire wire = TopoDS::Wire(pWire->Moved(XbimConvert::ToTransform(matrix3D)));
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return gcnew XbimWire(wire);
 		}
 
@@ -1182,7 +1180,7 @@ namespace Xbim
 			Standard_Real srXmin, srYmin, srZmin, srXmax, srYmax, srZmax;
 			if (pBox.IsVoid()) return XbimRect3D::Empty;
 			pBox.Get(srXmin, srYmin, srZmin, srXmax, srYmax, srZmax);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return XbimRect3D(srXmin, srYmin, srZmin, (srXmax - srXmin), (srYmax - srYmin), (srZmax - srZmin));
 		}
 
@@ -1207,32 +1205,90 @@ namespace Xbim
 		{
 			if (!IsValid)
 				return XbimVector3D();
+			gp_Dir dir;
 			try
 			{
-				gp_Dir dir = NormalDir(*pWire);
+				dir = NormalDir(*pWire);
 				return  XbimVector3D(dir.X(), dir.Y(), dir.Z());
 			}
 			catch (Standard_Failure sf)
 			{
-				System::String^ err = gcnew System::String(sf.GetMessageString());
-				throw gcnew System::Exception("Invalid normal: " + err);
+				// try again for debug
+				// dir = NormalDir(*pWire);
+				// auto val =  XbimVector3D(dir.X(), dir.Y(), dir.Z());
+
+				// System::String^ err = gcnew System::String(sf.GetMessageString());
+				// throw gcnew System::Exception("Invalid normal: " + err);
+				
+				// this returns a vector that can be checked for IsInvalid, 
+				// this seems better than throwing another exception.
+				return XbimVector3D();
 			}
 
 		}
 
 		gp_Dir XbimWire::NormalDir(const TopoDS_Wire& wire)
 		{
-
 			double x = 0, y = 0, z = 0;
-			gp_Pnt currentStart, previousEnd, first;
+			gp_Pnt currentStart, previousEnd, fallbackNormal, first;
 			int count = 0;
 			TopLoc_Location loc;
 			Standard_Real start, end;
 
+			gp_Pnt firstThreeUniquePoints[3];
+			int uniquePointsCounter = 0;
+
+
 			for (BRepTools_WireExplorer wEx(wire); wEx.More(); wEx.Next())
 			{
+
+
+				// auto orientation = wEx.Orientation();
+				//
+				// if (count > 0)
+				// {
+				// 	try
+				// 	{
+				// 		double local_x = 0, local_y = 0, local_z = 0;
+				// 		AddNewellPoint(previousEnd, first, local_x, local_y, local_z);
+				// 		gp_Dir dir(local_x, local_y, local_z);
+				// 		// return dir;
+				// 	}
+				// 	catch (Standard_Failure sf)
+				// 	{
+				//
+				// 		// attempt recovery by using the second last end point
+				// 		// AddNewellPoint(fallbackPreviousEnd, first, x, y, z);
+				// 		// gp_Dir dir(x, y, z);
+				// 		// return dir;
+				// 	}
+				// }
+
+
 				const TopoDS_Vertex& v = wEx.CurrentVertex();
 				currentStart = BRep_Tool::Pnt(v);
+
+				// compute the first three unique points we encounter - we can use this to compute a fallback normal
+				if (uniquePointsCounter < 2)
+				{
+					bool isUniquePoint = true;
+
+					// does the current point exist in unique points?
+					for (int uniqueSearchIndex = 0; uniquePointsCounter < 3 && uniqueSearchIndex < uniquePointsCounter; ++uniqueSearchIndex)
+					{
+						if (firstThreeUniquePoints[uniqueSearchIndex].IsEqual(currentStart, 0.001))
+						{
+							isUniquePoint = false;
+							break;
+						}
+					}
+
+					if (isUniquePoint)
+					{
+						firstThreeUniquePoints[uniquePointsCounter++] = currentStart;
+					}
+				}
+
 				Handle(Geom_Curve) c3d = BRep_Tool::Curve(wEx.Current(), loc, start, end);
 				if (!c3d.IsNull())
 				{
@@ -1246,16 +1302,17 @@ namespace Xbim
 							first = currentStart;
 						previousEnd = currentStart;
 					}
-					else if (wEx.Current().Closed() && ((cType == STANDARD_TYPE(Geom_Circle)) ||
+					else if (wEx.Current().Closed() && (
+						(cType == STANDARD_TYPE(Geom_Circle)) ||
 						(cType == STANDARD_TYPE(Geom_Ellipse)) ||
 						(cType == STANDARD_TYPE(Geom_Parabola)) ||
 						(cType == STANDARD_TYPE(Geom_Hyperbola)))) //it is a conic
 					{
 						Handle(Geom_Conic) conic = Handle(Geom_Conic)::DownCast(c3dptr);
 						return conic->Axis().Direction();
-
 					}
-					else if ((cType == STANDARD_TYPE(Geom_Circle)) ||
+					else if (
+						(cType == STANDARD_TYPE(Geom_Circle)) ||
 						(cType == STANDARD_TYPE(Geom_Ellipse)) ||
 						(cType == STANDARD_TYPE(Geom_Parabola)) ||
 						(cType == STANDARD_TYPE(Geom_Hyperbola)) ||
@@ -1318,17 +1375,66 @@ namespace Xbim
 				}
 				count++;
 			}
-			//do the last one
-			AddNewellPoint(previousEnd, first, x, y, z);
-			gp_Dir dir(x, y, z);
-			return dir;
+
+			static bool hotfix_normal_enabled = true;
+
+			// do the last one
+
+			try
+			{
+				// for fallback if the last previous and first point are very close upon completion.
+				// fallbackNormal.SetX(x);
+				// fallbackNormal.SetY(y);
+				// fallbackNormal.SetZ(z);
+
+				
+
+				// if we cannot form any meaningful normal, default to an up-vector.
+				// if (hotfix_normal_enabled && uniquePointsCounter < 3)
+				// {
+				// 	gp_Dir dir(0, 1, 0);
+				// 	return dir;
+				// }
+
+				AddNewellPoint(previousEnd, first, x, y, z);
+				gp_Dir dir(x, y, z);
+				return dir;
+			}
+			catch (...)
+			{
+				// // attempt recovery by using the second last end point
+				// try
+				// {
+				// 	gp_Dir dir(fallbackNormal.XYZ());
+				// 	return dir;
+				// }
+				// catch (...)
+				// {
+					// attempt recovery by using the first three unique points
+				
+
+				if (hotfix_normal_enabled && uniquePointsCounter >= 3)
+				{
+					gp_Vec p0(firstThreeUniquePoints[0].XYZ());
+					gp_Vec p1(firstThreeUniquePoints[1].XYZ());
+					gp_Vec p2(firstThreeUniquePoints[2].XYZ());
+					gp_Vec vn = (p1 - p0).Crossed(p2 - p0);
+					return gp_Dir(vn.Normalized());
+				}
+
+				throw;
+
+				// }
+
+
+			}
 		}
 
 		bool XbimWire::IsPlanar::get()
 		{
 			if (!IsValid) return false;
 			BRepBuilderAPI_FindPlane finder(*pWire);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return (finder.Found() == Standard_True);
 		}
 
@@ -1337,7 +1443,7 @@ namespace Xbim
 			if (!IsValid) return XbimPoint3D();
 			BRepAdaptor_CompCurve cc(*pWire, Standard_True);
 			gp_Pnt p = cc.Value(cc.FirstParameter());
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return XbimPoint3D(p.X(), p.Y(), p.Z());
 		}
 		gp_Pnt XbimWire::StartPoint::get()
@@ -1374,7 +1480,7 @@ namespace Xbim
 
 		TopoDS_Vertex XbimWire::EndVertex::get()
 		{
-			if (!IsValid) return TopoDS_Vertex();			
+			if (!IsValid) return TopoDS_Vertex();
 			TopoDS_Vertex v1, v2;
 			TopExp::Vertices(*pWire, v1, v2);
 			return v2;
@@ -1403,7 +1509,7 @@ namespace Xbim
 		{
 			if (!IsValid) return 0.;
 			BRepAdaptor_CompCurve cc(*pWire, Standard_True);
-			System::GC::KeepAlive(this);
+			GC::KeepAlive(this);
 			return cc.LastParameter() - cc.FirstParameter();
 		}
 
@@ -1715,8 +1821,8 @@ namespace Xbim
 			if (detailed && profile->LegSlope.HasValue)
 			{
 				double radConv = profile->Model->ModelFactors->AngleToRadiansConversionFactor;
-				p3.SetX(p3.X() + (((dY * 2) - tF) * System::Math::Tan(profile->LegSlope.Value * radConv)));
-				p3.SetY(p3.Y() + (((dX * 2) - tF) * System::Math::Tan(profile->LegSlope.Value * radConv)));
+				p3.SetX(p3.X() + (((dY * 2) - tF) * Math::Tan(profile->LegSlope.Value * radConv)));
+				p3.SetY(p3.Y() + (((dX * 2) - tF) * Math::Tan(profile->LegSlope.Value * radConv)));
 			}
 			gp_Pnt p4(dX, -dY + tF, 0);
 			gp_Pnt p5(dX, -dY, 0);
@@ -1798,8 +1904,8 @@ namespace Xbim
 			if (detailed && profile->FlangeSlope.HasValue)
 			{
 				double radConv = profile->Model->ModelFactors->AngleToRadiansConversionFactor;
-				p4.SetY(p4.Y() - (((dX * 2) - tW) * System::Math::Tan(profile->FlangeSlope.Value * radConv)));
-				p5.SetY(p5.Y() + (((dX * 2) - tW) * System::Math::Tan(profile->FlangeSlope.Value * radConv)));
+				p4.SetY(p4.Y() - (((dX * 2) - tW) * Math::Tan(profile->FlangeSlope.Value * radConv)));
+				p5.SetY(p5.Y() + (((dX * 2) - tW) * Math::Tan(profile->FlangeSlope.Value * radConv)));
 			}
 
 			BRepBuilderAPI_MakeWire wireMaker;
@@ -2293,12 +2399,12 @@ namespace Xbim
 				if (profile->WebSlope.HasValue) wSlope = profile->WebSlope.Value;
 				double bDiv4 = profile->FlangeWidth / 4;
 
-				p3.SetY(p3.Y() + (bDiv4 * System::Math::Tan(fSlope * radConv)));
-				p8.SetY(p8.Y() + (bDiv4 * System::Math::Tan(fSlope * radConv)));
+				p3.SetY(p3.Y() + (bDiv4 * Math::Tan(fSlope * radConv)));
+				p8.SetY(p8.Y() + (bDiv4 * Math::Tan(fSlope * radConv)));
 
 
-				gp_Lin2d flangeLine(gp_Pnt2d(bDiv4, dY - tF), gp_Dir2d(1, System::Math::Tan(fSlope * radConv)));
-				gp_Lin2d webLine(gp_Pnt2d(tW / 2.0, 0), gp_Dir2d(System::Math::Tan(wSlope * radConv), 1));
+				gp_Lin2d flangeLine(gp_Pnt2d(bDiv4, dY - tF), gp_Dir2d(1, Math::Tan(fSlope * radConv)));
+				gp_Lin2d webLine(gp_Pnt2d(tW / 2.0, 0), gp_Dir2d(Math::Tan(wSlope * radConv), 1));
 				IntAna2d_AnaIntersection intersector(flangeLine, webLine);
 				const IntAna2d_IntPoint& intersectPoint = intersector.Point(1);
 				gp_Pnt2d p2d = intersectPoint.Value();
@@ -2308,8 +2414,8 @@ namespace Xbim
 				p7.SetX(-p2d.X());
 				p7.SetY(p2d.Y());
 
-				p5.SetX(p5.X() - (dY * System::Math::Tan(wSlope * radConv)));
-				p6.SetX(p6.X() + (dY * System::Math::Tan(wSlope * radConv)));
+				p5.SetX(p5.X() - (dY * Math::Tan(wSlope * radConv)));
+				p6.SetX(p6.X() + (dY * Math::Tan(wSlope * radConv)));
 			}
 
 			BRepBuilderAPI_MakeWire wireMaker;
@@ -2469,19 +2575,19 @@ namespace Xbim
 				while (!trimmedCurve.IsNull()) //remove trims
 				{
 					curve = trimmedCurve->BasisCurve();
-					trimmedCurve = Handle(Geom_TrimmedCurve)::DownCast(curve);				
+					trimmedCurve = Handle(Geom_TrimmedCurve)::DownCast(curve);
 				}
 				if (curve->IsPeriodic()) //stay in bounds for splines etc, keep orientation for periodics, 
 				{
 					l = f + last;
-					f = f + first;					
+					f = f + first;
 				}
 				else
 				{
-					f = System::Math::Max(f, first);
-					l = System::Math::Min(l, last);
+					f = Math::Max(f, first);
+					l = Math::Min(l, last);
 				}
-				if (System::Math::Abs(f - l) > Precision::Confusion())
+				if (Math::Abs(f - l) > Precision::Confusion())
 				{
 					Handle(Geom_TrimmedCurve) trimmed = new Geom_TrimmedCurve(curve, f, l);
 					BRepBuilderAPI_MakeWire wm;
@@ -2527,7 +2633,7 @@ namespace Xbim
 						double maxTolerance = BRep_Tool::MaxTolerance(edge, TopAbs_VERTEX);
 						GeomLib_Tool::Parameter(curve, pFirst, maxTolerance, uOnEdgeFirst);
 						GeomLib_Tool::Parameter(curve, pLast, maxTolerance, uOnEdgeLast);
-						if (System::Math::Abs(uOnEdgeFirst - uOnEdgeLast) > Precision::Confusion())
+						if (Math::Abs(uOnEdgeFirst - uOnEdgeLast) > Precision::Confusion())
 						{
 							Handle(Geom_TrimmedCurve) trimmed = new Geom_TrimmedCurve(curve, uOnEdgeFirst, uOnEdgeLast);
 							wm.Add(BRepBuilderAPI_MakeEdge(trimmed));
@@ -2540,7 +2646,7 @@ namespace Xbim
 						double uOnEdgeFirst;
 						double maxTolerance = BRep_Tool::MaxTolerance(edge, TopAbs_VERTEX);
 						GeomLib_Tool::Parameter(curve, pFirst, maxTolerance, uOnEdgeFirst);
-						if (System::Math::Abs(uOnEdgeFirst - lEdge) > Precision::Confusion())
+						if (Math::Abs(uOnEdgeFirst - lEdge) > Precision::Confusion())
 						{
 							Handle(Geom_TrimmedCurve) trimmed = new Geom_TrimmedCurve(curve, uOnEdgeFirst, lEdge);
 							wm.Add(BRepBuilderAPI_MakeEdge(trimmed));
@@ -2556,7 +2662,7 @@ namespace Xbim
 						double uOnEdgeLast;
 						double maxTolerance = BRep_Tool::MaxTolerance(edge, TopAbs_VERTEX);
 						GeomLib_Tool::Parameter(curve, pLast, maxTolerance, uOnEdgeLast);
-						if (System::Math::Abs(uOnEdgeLast - fEdge) > Precision::Confusion())
+						if (Math::Abs(uOnEdgeLast - fEdge) > Precision::Confusion())
 						{
 							Handle(Geom_TrimmedCurve) trimmed = new Geom_TrimmedCurve(curve, fEdge, uOnEdgeLast);
 							wm.Add(BRepBuilderAPI_MakeEdge(trimmed));
@@ -2591,7 +2697,7 @@ namespace Xbim
 
 		void XbimWire::Mesh(IXbimMeshReceiver^ /*mesh*/, double /*precision*/, double /*deflection*/, double /*angle*/)
 		{
-			throw gcnew System::NotImplementedException("XbimWire::Mesh");
+			throw gcnew NotImplementedException("XbimWire::Mesh");
 		}
 
 		void XbimWire::Move(IIfcAxis2Placement3D^ position)
@@ -2942,7 +3048,7 @@ namespace Xbim
 
 #pragma region Helper functions
 
-		void XbimWire::AddNewellPoint(const gp_Pnt& previous, const gp_Pnt& current, double& x, double& y, double& z)
+		void XbimWire::AddNewellPoint(const gp_Pnt& previous, const gp_Pnt& current, double& normalX, double& normalY, double& normalZ)
 		{
 			const double& xn = previous.X();
 			const double& yn = previous.Y();
@@ -2950,16 +3056,18 @@ namespace Xbim
 			const double& xn1 = current.X();
 			const double& yn1 = current.Y();
 			const double& zn1 = current.Z();
-			/*
-			Debug::WriteLine("_.LINE");
-			Debug::WriteLine("{0},{1},{2}", xn, yn, zn);
-			Debug::WriteLine("{0},{1},{2}", xn1, yn1, zn1);
-			Debug::WriteLine("");
-			*/
+			
+			// Debug::WriteLine("_.LINE");
+			// System::Diagnostics::Debug::WriteLine("from {0},{1},{2} ", xn, yn, zn);
+			// System::Diagnostics::Debug::WriteLine("to {0},{1},{2}", xn1, yn1, zn1);
+			//Debug::WriteLine("");
+			
+			// this has been checked, the factors are passed in a different order than the 
+			// canonical pseudocode at kronos, but the results are identical
+			normalX += (yn - yn1) * (zn + zn1);
+			normalY += (xn + xn1) * (zn - zn1);
+			normalZ += (xn - xn1) * (yn + yn1);
 
-			x += (yn - yn1) * (zn + zn1);
-			y += (xn + xn1) * (zn - zn1);
-			z += (xn - xn1) * (yn + yn1);
 			/*
 			Debug::WriteLine("-HYPERLINK I O l  {0},{1},{2}", x, y, z);
 			Debug::WriteLine("");

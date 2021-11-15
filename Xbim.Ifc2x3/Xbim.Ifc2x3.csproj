@@ -8,6 +8,7 @@
     <DelaySign>false</DelaySign>
     <Title>Xbim IFC2x3</Title>
     <Description>Provides supports the IFC2x3 schema.</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xbim.Common\Xbim.Common.csproj" />

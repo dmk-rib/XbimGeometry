@@ -31,7 +31,7 @@
 template <class TheKeyType>
 inline Standard_Integer HashCode_Proxy (const TheKeyType& theKey, const Standard_Integer theUpperBound)
 {
-  return HashCode (theKey, theUpperBound);
+  return ::HashCode (theKey, theUpperBound);
 }
 
 //=======================================================================

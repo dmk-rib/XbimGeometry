@@ -258,6 +258,13 @@ protected:
    * Cells are stored in the map, each cell contains list of objects 
    * that belong to that cell.
    */
+
+
+// todo: [RIB] remove public accessor for template specialization hack
+public:
+// -------------------------------------------------------------------
+
+
   struct Cell
   {
   public:
@@ -346,7 +353,7 @@ protected:
   //! @return a computed hash code, in the range [1, theUpperBound]
   friend Standard_Integer HashCode (const Cell& theCell, const Standard_Integer theUpperBound)
   {
-    return theCell.HashCode (theUpperBound);
+  	return theCell.HashCode (theUpperBound);
   }
 
   friend Standard_Boolean IsEqual (const Cell &aCell1, const Cell &aCell2)
