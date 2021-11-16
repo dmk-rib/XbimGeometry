@@ -30,11 +30,9 @@ namespace Xbim
 {
 	namespace Geometry
 	{
-
-
-		String^ XbimSolidSet::ToBRep::get()
+		System::String^ XbimSolidSet::ToBRep::get()
 		{
-			if (!IsValid) return String::Empty;
+			if (!IsValid) return System::String::Empty;
 			std::ostringstream oss;
 			BRep_Builder b;
 			TopoDS_Compound comp;
@@ -48,7 +46,7 @@ namespace Xbim
 				}
 			}
 			BRepTools::Write(comp, oss);
-			return gcnew String(oss.str().c_str());
+			return gcnew System::String(oss.str().c_str());
 		}
 
 		XbimSolidSet::XbimSolidSet(const TopoDS_Shape& shape)
@@ -91,7 +89,7 @@ namespace Xbim
 					solids->Add(gcnew XbimSolid(s));
 				}*/
 			}
-			GC::KeepAlive(shape);
+			System::GC::KeepAlive(shape);
 		}
 
 		XbimSolidSet::XbimSolidSet()
@@ -284,7 +282,7 @@ namespace Xbim
 		IXbimSolidSet^ XbimSolidSet::Range(int start, int count)
 		{
 			XbimSolidSet^ ss = gcnew XbimSolidSet();
-			for (int i = start; i < Math::Min(solids->Count, count); i++)
+			for (int i = start; i < System::Math::Min(solids->Count, count); i++)
 			{
 				ss->Add(solids[i]);
 			}
@@ -491,7 +489,6 @@ namespace Xbim
 				aBOP.SetNonDestructive(true);
 				aBOP.SetFuzzyValue(fuzzyTol);
 				
-				
 				//// todo: multiple boolean timeout has been disabled
 				//// what's the relatinoship between scope and monitor?
 				Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeout);
@@ -656,7 +653,7 @@ namespace Xbim
 					solidResults->Add(resultSolids);
 				}
 
-				String^ msg = "";
+				System::String^ msg = "";
 				switch (success)
 				{
 				case BOOLEAN_PARTIALSUCCESSBADTOPOLOGY:
@@ -674,7 +671,7 @@ namespace Xbim
 				default:
 					break;
 				}
-				if (!String::IsNullOrWhiteSpace(msg))
+				if (!System::String::IsNullOrWhiteSpace(msg))
 					XbimGeometryCreator::LogWarning(logger, nullptr, msg);
 				if (success <= 0)
 					throw gcnew XbimGeometryException(msg);
@@ -1028,8 +1025,7 @@ namespace Xbim
 			{
 				IIfcBooleanResult^ booleanResult = dynamic_cast<IIfcBooleanResult^>(IIfcSolid->TreeRootExpression);
 				if (booleanResult != nullptr) return Init(booleanResult, logger);
-				throw gcnew NotImplementedException(String::Format("IIfcCsgSolid of Type {0} in entity #{1} is not implemented", IIfcSolid->GetType()->Name, IIfcSolid->EntityLabel));
-
+				throw gcnew System::NotImplementedException(System::String::Format("IIfcCsgSolid of Type {0} in entity #{1} is not implemented", IIfcSolid->GetType()->Name, IIfcSolid->EntityLabel));
 			}
 		}
 
@@ -1068,7 +1064,7 @@ namespace Xbim
 							solidSet->Add(s);
 					}
 				}
-				catch (Exception ^ e)
+				catch (System::Exception^ e)
 				{
 					XbimGeometryCreator::LogError(logger, solid, "Failed to clip #{0} with #{1}. {2}", solid->EntityLabel, bOp->EntityLabel, e->Message);
 				}
@@ -1084,7 +1080,7 @@ namespace Xbim
 						solids->AddRange(xbimSolidSet);
 					}
 				}
-				catch (Exception ^ e)
+				catch (System::Exception^ e)
 				{
 					XbimGeometryCreator::LogWarning(logger, solid, "Failed to clip #{0} with #{1}. {2}", solid->FirstOperand->EntityLabel, solid->SecondOperand->EntityLabel, e->Message);
 				}
@@ -1230,7 +1226,7 @@ namespace Xbim
 				}
 				//XbimOccWriter::Write(result, "c:/tmp/bop" + boolOp->ToString()->Replace(";","") +".txt");
 			}
-			catch (Exception ^ e)
+			catch (System::Exception^ e)
 			{
 				XbimGeometryCreator::LogError(logger, boolOp, "Failed to perform boolean result from #{0} with #{1}. {2}", boolOp->FirstOperand->EntityLabel, boolOp->SecondOperand->EntityLabel, e->Message);
 				solids->AddRange(left);; //return the left operand

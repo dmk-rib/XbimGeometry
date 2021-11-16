@@ -3,7 +3,9 @@
 #include "XbimWire.h"
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
+
 using namespace System::Collections::Generic;
+
 namespace Xbim
 {
 	namespace Geometry

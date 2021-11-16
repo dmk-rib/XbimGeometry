@@ -954,7 +954,7 @@
     <ClCompile Include="..\..\..\src\Message\Message_ProgressIndicator.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_ProgressScale.cxx" />
     <ClCompile Include="..\..\..\src\Message\Message_ProgressSentry.cxx" />
-    <ClCompile Include="..\..\..\src\Message\Message_Report.cxx" />
+    <ClCompile Include="..\..\..\src\Message\Message_Report.cxx" />    
     <ClInclude Include="..\..\..\src\Message\Message.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Alert.hxx" />
     <ClInclude Include="..\..\..\src\Message\Message_Algorithm.hxx" />

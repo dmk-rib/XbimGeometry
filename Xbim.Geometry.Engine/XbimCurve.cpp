@@ -26,7 +26,6 @@
 #include <GC_MakeArcOfCircle.hxx>
 #include <gp_Circ.hxx>
 
-using namespace System;
 using namespace System::Linq;
 namespace Xbim
 {
@@ -35,8 +34,8 @@ namespace Xbim
 		/*Ensures native pointers are deleted and garbage collected*/
 		void XbimCurve::InstanceCleanup()
 		{
-			IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, IntPtr::Zero);
-			if (temp != IntPtr::Zero)
+			System::IntPtr temp = System::Threading::Interlocked::Exchange(ptrContainer, System::IntPtr::Zero);
+			if (temp != System::IntPtr::Zero)
 				delete (Handle(Geom_Curve)*)(temp.ToPointer());
 			System::GC::SuppressFinalize(this);
 		}
@@ -56,7 +55,7 @@ namespace Xbim
 			BndLib_Add3dCurve::Add(myAdpSection, 0., b1);
 			Standard_Real srXmin, srYmin, srZmin, srXmax, srYmax, srZmax;
 			b1.Get(srXmin, srYmin, srZmin, srXmax, srYmax, srZmax);
-			GC::KeepAlive(this);
+			System::GC::KeepAlive(this);
 			return XbimRect3D(srXmin, srYmin, srZmin, (srXmax - srXmin), (srYmax - srYmin), (srZmax - srZmin));
 		}
 
@@ -105,12 +104,12 @@ namespace Xbim
 
 		IXbimGeometryObject^ XbimCurve::Transform(XbimMatrix3D /*matrix3D*/)
 		{
-			throw gcnew Exception("Tranformation of curves is not currently supported");
+			throw gcnew System::Exception("Tranformation of curves is not currently supported");
 		}
 
 		IXbimGeometryObject^ XbimCurve::TransformShallow(XbimMatrix3D /*matrix3D*/)
 		{
-			throw gcnew Exception("TransformShallow of curves is not currently supported");
+			throw gcnew System::Exception("TransformShallow of curves is not currently supported");
 		}
 
 		IEnumerable<XbimPoint3D>^ XbimCurve::Intersections(IXbimCurve^ intersector, double tolerance, ILogger^ /*logger*/)
@@ -151,7 +150,7 @@ namespace Xbim
 			else if (curve == nullptr)
 				XbimGeometryCreator::LogWarning(logger, curve, "Curve is null");
 			else
-				throw gcnew Exception(String::Format("Unsupported Curve Type {0}", curve->GetType()->Name));
+				throw gcnew System::Exception(System::String::Format("Unsupported Curve Type {0}", curve->GetType()->Name));
 		}
 
 #pragma region IfcBoundedCurve
@@ -618,7 +617,7 @@ namespace Xbim
 					if (!u1Found)  GeomLib_Tool::Parameter(*pCurve, p1, precision * 10, u1);
 					if (!u2Found)  GeomLib_Tool::Parameter(*pCurve, p2, precision * 10, u2);
 				}
-				if (Math::Abs(u1 - u2) < Precision::Confusion())
+				if (System::Math::Abs(u1 - u2) < Precision::Confusion())
 				{
 					pCurve->Nullify();
 					pCurve = nullptr;
@@ -630,14 +629,14 @@ namespace Xbim
 					IIfcEllipse^ ellipse = (IIfcEllipse^)curve->BasisCurve;
 					if (ellipse->SemiAxis1 < ellipse->SemiAxis2)
 					{
-						u1 -= Math::PI / 2;
-						u2 -= Math::PI / 2;
+						u1 -= System::Math::PI / 2;
+						u2 -= System::Math::PI / 2;
 					}
 				}
 				if (isConic)
 				{
 					if (abs(u2 - 0) <= Precision::Confusion()) //the end parameter is zero, make it 360 to ensure correct direction
-						u2 = 2 * Math::PI;
+						u2 = 2 * System::Math::PI;
 				}
 				//now just go with
 				bool sameSense = curve->SenseAgreement;
@@ -669,7 +668,7 @@ namespace Xbim
 			}
 			else
 			{
-				Type^ type = circle->Position->GetType();
+				System::Type^ type = circle->Position->GetType();
 				XbimGeometryCreator::LogError(logger, circle, "Placement of type {0} is not implemented", type->Name);
 				return;
 			}
@@ -691,7 +690,7 @@ namespace Xbim
 				return;
 			}
 			gp_Ax3 ax3 = XbimConvert::ToAx3(ellipse->Position);
-			if (Math::Abs(semiAx1 - semiAx2) < gp::Resolution()) //its a circle
+			if (System::Math::Abs(semiAx1 - semiAx2) < gp::Resolution()) //its a circle
 			{
 				GC_MakeCircle maker(ax3.Ax2(), semiAx1);
 				pCurve = new Handle(Geom_Curve)(maker.Value());
@@ -769,7 +768,7 @@ namespace Xbim
 
 		void XbimCurve::Init(IIfcSurfaceCurve^ /*curve*/, ILogger^ /*logger*/)
 		{
-			throw gcnew NotImplementedException("IIfcSurfaceCurve is not yet implemented");
+			throw gcnew System::NotImplementedException("IIfcSurfaceCurve is not yet implemented");
 		}
 
 		void XbimCurve::Reverse()

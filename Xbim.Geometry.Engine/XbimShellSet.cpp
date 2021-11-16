@@ -12,7 +12,7 @@
 #include <BRepBndLib.hxx>
 #include <Bnd_Array1OfBox.hxx>
 #include <BRepBuilderAPI_Sewing.hxx>
-using namespace System;
+
 namespace Xbim
 {
 	namespace Geometry
@@ -124,7 +124,7 @@ namespace Xbim
 
 		void XbimShellSet::Union(double /*tolerance*/)
 		{
-			throw gcnew NotImplementedException("XbimShellSet::Union");
+			throw gcnew System::NotImplementedException("XbimShellSet::Union");
 		}
 
 		IXbimGeometryObject ^ XbimShellSet::Transformed(IIfcCartesianTransformationOperator ^ transformation)

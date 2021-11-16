@@ -250,14 +250,7 @@ public:
         && myLocation == theOther.myLocation
         && myOrient   == theOther.myOrient;
   }
-  int MaterialId()
-  {
-      return myMaterialId;
-  }
-  void SetMaterialId(int id)
-  {
-      myMaterialId = id;
-  }
+
   Standard_Boolean operator == (const TopoDS_Shape& theOther) const { return IsEqual (theOther); }
   
   //! Negation of the IsEqual method.
@@ -284,18 +277,18 @@ public:
     aShape.EmptyCopy();
     return aShape;
   }
-   
+
   void TShape (const Handle(TopoDS_TShape)& theTShape) { myTShape = theTShape; }
 
   //! Dumps the content of me into the stream
-  Standard_EXPORT void DumpJson (Standard_OStream& theOStream, const Standard_Integer theDepth = -1) const;
+  Standard_EXPORT void DumpJson (Standard_OStream& theOStream, Standard_Integer theDepth = -1) const;
 
 private:
 
   Handle(TopoDS_TShape) myTShape;
   TopLoc_Location myLocation;
   TopAbs_Orientation myOrient;
-  int myMaterialId=-1;
+
 };
 
 //! Computes a hash code for the given shape, in the range [1, theUpperBound]

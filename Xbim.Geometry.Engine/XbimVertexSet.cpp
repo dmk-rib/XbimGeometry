@@ -4,7 +4,6 @@
 #include <TopExp.hxx>
 
 
-using namespace System;
 namespace Xbim
 {
 	namespace Geometry
@@ -99,7 +98,7 @@ namespace Xbim
 
 		void XbimVertexSet::Mesh(IXbimMeshReceiver ^ /*mesh*/, double /*precision*/, double /*deflection*/, double /*angle*/)
 		{
-			throw gcnew NotImplementedException("XbimVertexSet::Mesh");
+			throw gcnew System::NotImplementedException("XbimVertexSet::Mesh");
 		}
 
 

@@ -11,6 +11,7 @@ using namespace System::IO;
 using namespace Xbim::Ifc4::Interfaces;
 using namespace Xbim::Common::Geometry;
 using namespace Xbim::Ifc4::MeasureResource;
+
 namespace Xbim
 {
 	namespace Geometry
@@ -20,11 +21,11 @@ namespace Xbim
 		{
 		private:
 
-			IntPtr ptrContainer;
+			System::IntPtr ptrContainer;
 			virtual property TopoDS_Solid* pSolid
 			{
 				TopoDS_Solid* get() sealed { return (TopoDS_Solid*)ptrContainer.ToPointer(); }
-				void set(TopoDS_Solid* val)sealed { ptrContainer = IntPtr(val); }
+				void set(TopoDS_Solid* val)sealed { ptrContainer = System::IntPtr(val); }
 			}
 			void InstanceCleanup();
 
@@ -48,8 +49,8 @@ namespace Xbim
 
 
 			void Init(IIfcSweptDiskSolid^ solid, ILogger^ logger);
-			String^ BuildSweptDiskSolid(const TopoDS_Wire& directrixWire, double radius, double innerRadius, BRepBuilderAPI_TransitionMode transitionMode);
-			XbimWire^ CreateDirectrix(IIfcCurve^ directrix, Nullable<IfcParameterValue> startParam, Nullable<IfcParameterValue> endParam, ILogger^ logger);
+			System::String^ BuildSweptDiskSolid(const TopoDS_Wire& directrixWire, double radius, double innerRadius, BRepBuilderAPI_TransitionMode transitionMode);
+			XbimWire^ CreateDirectrix(IIfcCurve^ directrix, System::Nullable<IfcParameterValue> startParam, System::Nullable<IfcParameterValue> endParam, ILogger^ logger);
 			// this is case handled by IIfcSweptDiskSolid 
 			// void Init(IIfcSweptDiskSolidPolygonal^ solid, ILogger^ logger);
 			void Init(IIfcBoundingBox^ solid, ILogger^ logger);
@@ -107,7 +108,7 @@ namespace Xbim
 			virtual IXbimFaceSet^ Section(IXbimFace^ face, double tolerance, ILogger^ logger);
 			virtual IXbimGeometryObject^ Transform(XbimMatrix3D matrix3D) override;
 			virtual IXbimGeometryObject^ TransformShallow(XbimMatrix3D matrix3D)override;
-			virtual void SaveAsBrep(String^ fileName);
+			virtual void SaveAsBrep(System::String^ fileName);
 #pragma endregion
 
 #pragma region destructors

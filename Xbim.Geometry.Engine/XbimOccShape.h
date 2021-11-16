@@ -9,7 +9,6 @@ using namespace System::Collections::Generic;
 using namespace Xbim::Common::Geometry;
 using namespace Xbim::Ifc4::Interfaces;
 
-
 namespace Xbim
 {
 	namespace Geometry
@@ -31,7 +30,7 @@ namespace Xbim
 		
 			
 		public:
-			static void WriteIndex(BinaryWriter^ bw, UInt32 index, UInt32 maxInt);
+			static void WriteIndex(BinaryWriter^ bw, System::UInt32 index, System::UInt32 maxInt);
 			XbimOccShape();
 			//operators
 			virtual operator const TopoDS_Shape& () abstract;

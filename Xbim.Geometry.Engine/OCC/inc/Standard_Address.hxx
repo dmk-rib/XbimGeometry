@@ -33,7 +33,7 @@ inline Standard_Integer HashCode (const void* const thePointer, const Standard_I
   U.I[1] = 0;
   U.L    = thePointer;
 
-  return ::HashCode(U.I[0] ^ U.I[1], theUpperBound);
+  return HashCode (U.I[0] ^ U.I[1], theUpperBound);
 }
 
 //============================================================================

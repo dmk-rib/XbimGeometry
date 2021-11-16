@@ -8,12 +8,12 @@ bool XbimNativeApi::FixShell(TopoDS_Shell& shell, double timeOut, std::string& e
 	try
 	{
 		ShapeFix_Shell shellFixer(shell);
-		Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeOut);	
+		XbimProgressMonitor& pi  = XbimProgressMonitor(timeOut);
 		if (shellFixer.Perform(pi))
 		{
 			shell = shellFixer.Shell();
 		}
-		if (pi->TimedOut())
+		if (pi.TimedOut())
 		{
 			errMsg = "ShapeFix_Shell timed out";
 			return false;
@@ -34,12 +34,12 @@ bool XbimNativeApi::FixShape(TopoDS_Shape& shape, double timeOut, std::string& e
 	try
 	{
 		ShapeFix_Shape shapeFixer(shape);
-		Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeOut);
+		XbimProgressMonitor& pi = XbimProgressMonitor(timeOut);
 		if (shapeFixer.Perform(pi))
 		{
 			shape = shapeFixer.Shape();
 		}
-		if (pi->TimedOut())
+		if (pi.TimedOut())
 		{
 			errMsg = "ShapeFix_Shape timed out";
 			return false;
@@ -61,9 +61,9 @@ bool XbimNativeApi::SewShape(TopoDS_Shape& shape, double tolerance, double timeO
 	{
 		BRepBuilderAPI_Sewing seamstress(tolerance);
 		seamstress.Add(shape);
-		Handle(XbimProgressMonitor) pi = new XbimProgressMonitor(timeOut);
+		XbimProgressMonitor& pi = XbimProgressMonitor(timeOut);
 		seamstress.Perform(pi);
-		if (pi->TimedOut())
+		if (pi.TimedOut())
 		{
 			errMsg = "Shape sewing timed out";
 			return false;

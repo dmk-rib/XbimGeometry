@@ -23,8 +23,9 @@
 #include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <TopTools_ListIteratorOfListOfShape.hxx>
 #include "XbimNativeApi.h"
-using namespace System;
+
 using namespace System::ComponentModel;
+
 namespace Xbim
 {
 	namespace Geometry
@@ -152,7 +153,7 @@ namespace Xbim
 				else if (occObject != nullptr)
 					occObject->Mesh(mesh, precision, deflection, angle);
 				else
-					throw gcnew Exception("Unsupported geometry type cannot be meshed");
+					throw gcnew System::Exception("Unsupported geometry type cannot be meshed");
 			}
 		}
 
@@ -414,12 +415,12 @@ namespace Xbim
 			return PerformBoolean(bop, geomObjects, solids, tolerance, logger);
 		}
 
-		String^ XbimGeometryObjectSet::ToBRep::get()
+		System::String^ XbimGeometryObjectSet::ToBRep::get()
 		{
 			std::ostringstream oss;
 			TopoDS_Compound comp = CreateCompound(geometryObjects);
 			BRepTools::Write(comp, oss);
-			return gcnew String(oss.str().c_str());
+			return gcnew System::String(oss.str().c_str());
 		}
 
 		TopoDS_Compound XbimGeometryObjectSet::CreateCompound(IEnumerable<IXbimGeometryObject^>^ geomObjects)
@@ -444,7 +445,7 @@ namespace Xbim
 
 		IXbimGeometryObjectSet^ XbimGeometryObjectSet::PerformBoolean(BOPAlgo_Operation bop, IEnumerable<IXbimGeometryObject^>^ geomObjects, IXbimSolidSet^ solids, double tolerance, ILogger^ logger)
 		{
-			String^ err = "";
+			System::String^ err = "";
 
 			//BRepAlgoAPI_BooleanOperation* pBuilder = nullptr;
 			try
@@ -520,7 +521,7 @@ namespace Xbim
 					{
 						success = BOOLEAN_FAIL;
 					}
-					String^ msg = "";
+					System::String^ msg = "";
 					switch (success)
 					{
 					case BOOLEAN_PARTIALSUCCESSBADTOPOLOGY:
@@ -538,7 +539,7 @@ namespace Xbim
 					default:
 						break;
 					}
-					if (!String::IsNullOrWhiteSpace(msg))
+					if (!System::String::IsNullOrWhiteSpace(msg))
 						XbimGeometryCreator::LogWarning(logger, nullptr, msg);
 
 				}

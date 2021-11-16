@@ -201,3 +201,4 @@ SharedFileVersionInfo.cs
 Xbim.Geometry.Engine/SharedFileVersionInfo.cpp
 *.opendb
 *.VC.db
+/Headers

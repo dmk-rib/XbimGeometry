@@ -3,7 +3,9 @@
 #include <TopExp_Explorer.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopoDS.hxx>
+
 using namespace System::Collections::Generic;
+
 namespace Xbim
 {
 	namespace Geometry

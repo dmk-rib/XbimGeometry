@@ -1,13 +1,10 @@
 #pragma once
 #include "XbimVertex.h"
-#include "XbimVertex.h"
 #include "XbimEdge.h"
-using namespace System;
+
 using namespace System::IO;
 using namespace Xbim::Common;
 using namespace Xbim::Common::Geometry;
-
-using namespace System::Configuration;
 using namespace Xbim::Ifc4::Interfaces;
 using namespace Xbim::Ifc4;
 
@@ -34,8 +31,8 @@ namespace Xbim
 			
 		public:
 
-			static String^ SurfaceOfLinearExtrusion = "#SurfaceOfLinearExtrusion";
-			static String^ PolylineTrimLengthOneForEntireLine = "#PolylineTrimLengthOneForEntireLine";
+			static System::String^ SurfaceOfLinearExtrusion = "#SurfaceOfLinearExtrusion";
+			static System::String^ PolylineTrimLengthOneForEntireLine = "#PolylineTrimLengthOneForEntireLine";
 
 		private:
 			
@@ -50,15 +47,15 @@ namespace Xbim
 				System::String^ timeOut = System::Environment::GetEnvironmentVariable("BooleanTimeOut");
 				if (!int::TryParse(timeOut, BooleanTimeOut))
 					BooleanTimeOut = 60;
-				String^ fuzzyString = ConfigurationManager::AppSettings["FuzzyFactor"];
+				System::String^ fuzzyString = System::Environment::GetEnvironmentVariable("FuzzyFactor");
 				if (!double::TryParse(fuzzyString, FuzzyFactor))
 					FuzzyFactor = 10;
 
-				String^ linearDeflection = ConfigurationManager::AppSettings["LinearDeflectionInMM"];
+				System::String^ linearDeflection = System::Environment::GetEnvironmentVariable("LinearDeflectionInMM");
 				if (!double::TryParse(linearDeflection, LinearDeflectionInMM))
 					LinearDeflectionInMM = 50; //max chord diff
 
-				String^ angularDeflection = ConfigurationManager::AppSettings["AngularDeflectionInRadians"];
+				System::String^ angularDeflection = System::Environment::GetEnvironmentVariable("AngularDeflectionInRadians");
 				if (!double::TryParse(angularDeflection, AngularDeflectionInRadians))
 					AngularDeflectionInRadians = 0.5;// deflection of 28 degrees
 
@@ -73,10 +70,10 @@ namespace Xbim
 			}
 			
 			//Central point for logging all errors
-			static void LogInfo(ILogger^ logger, Object^ entity, String^ format, ... array<Object^>^ arg);
-			static void LogWarning(ILogger^ logger, Object^ entity, String^ format, ... array<Object^>^ arg);
-			static void LogError(ILogger^ logger, Object^ entity, String^ format, ... array<Object^>^ arg);
-			static void LogDebug(ILogger^ logger, Object^ entity, String^ format, ... array<Object^>^ arg);
+			static void LogInfo(ILogger^ logger, Object^ entity, System::String^ format, ... array<Object^>^ arg);
+			static void LogWarning(ILogger^ logger, Object^ entity, System::String^ format, ... array<Object^>^ arg);
+			static void LogError(ILogger^ logger, Object^ entity, System::String^ format, ... array<Object^>^ arg);
+			static void LogDebug(ILogger^ logger, Object^ entity, System::String^ format, ... array<Object^>^ arg);
 
 			virtual void WriteBrep(System::String^ filename, IXbimGeometryObject^ geomObj);
 			virtual IXbimGeometryObject^ ReadBrep(System::String^ filename);

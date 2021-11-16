@@ -94,7 +94,7 @@ namespace Xbim
 
 		void XbimWireSet::Mesh(IXbimMeshReceiver ^ /*mesh*/, double /*precision*/, double /*deflection*/, double /*angle*/)
 		{
-			throw gcnew NotImplementedException("XbimWireSet::Mesh");
+			throw gcnew System::NotImplementedException("XbimWireSet::Mesh");
 		}
 
 		XbimRect3D XbimWireSet::BoundingBox::get()

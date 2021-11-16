@@ -10,11 +10,11 @@
 #include "XbimConstraints.h"
 #include <BRepBuilderAPI_MakeWire.hxx>
 
-using namespace System;
 using namespace System::Collections::Generic;
 using namespace Xbim::Ifc4::Interfaces;
 using namespace Xbim::Common::Geometry;
 using namespace Xbim::Tessellator;
+
 namespace Xbim
 {
 	namespace Geometry
@@ -26,11 +26,11 @@ namespace Xbim
 			// Lock for preventing a usage of BRepOffsetAPI_MakeOffset.Perform(...) in a multi-threaded mode.
 			static Object^ _makeOffsetLock = gcnew Object();
 
-			IntPtr ptrContainer;
+			System::IntPtr ptrContainer;
 			virtual property TopoDS_Wire* pWire
 			{
 				TopoDS_Wire* get() sealed { return (TopoDS_Wire*)ptrContainer.ToPointer(); }
-				void set(TopoDS_Wire* val)sealed { ptrContainer = IntPtr(val); }
+				void set(TopoDS_Wire* val)sealed { ptrContainer = System::IntPtr(val); }
 			}
 			void InstanceCleanup();
 			void ModifyWireAddEdge(TopoDS_Wire& resultWire,
