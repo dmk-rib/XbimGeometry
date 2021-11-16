@@ -258,6 +258,9 @@ protected:
    * Cells are stored in the map, each cell contains list of objects 
    * that belong to that cell.
    */
+// todo: [RIB] remove public accessor for template specialization hack
+public:
+// -------------------------------------------------------------------
   struct Cell
   {
   public:
