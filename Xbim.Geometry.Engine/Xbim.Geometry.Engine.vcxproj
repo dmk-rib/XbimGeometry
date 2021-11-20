@@ -127,11 +127,11 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\OCC\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\OCCT\inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;TKBO.lib;TKBOOL.lib;TKBRep.lib;TKernel.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKMath.lib;TKMesh.lib;TKOffset.lib;TKPrim.lib;TKShHealing.lib;TKTopAlgo.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\OCC\win64\vc14\bind\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\OCCT\libd</AdditionalLibraryDirectories>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
@@ -154,11 +154,11 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>OCC\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\OCCT\inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;comdlg32.lib;wsock32.lib;Psapi.lib;TKBO.lib;TKBOOL.lib;TKBRep.lib;TKernel.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKMath.lib;TKMesh.lib;TKOffset.lib;TKPrim.lib;TKShHealing.lib;TKTopAlgo.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>OCC\win64\vc14\bin\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\OCCT\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
