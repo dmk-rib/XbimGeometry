@@ -18,6 +18,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xbim.ModelGeometry.Scene", "..\Xbim.ModelGeometry.Scene\Xbim.ModelGeometry.Scene.csproj", "{481C1876-E9FD-4ABD-A34A-677C2EED41CA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Xbim.Geometry.Engine", "..\Xbim.Geometry.Engine\Xbim.Geometry.Engine.vcxproj", "{DEFB2CD3-B35F-450A-A829-D3FE50CFC19A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4BF236DA-A49C-4B36-941B-10872420F445} = {4BF236DA-A49C-4B36-941B-10872420F445}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xbim.Ifc4", "..\Xbim.Ifc4\Xbim.Ifc4.csproj", "{2C0576AE-E47F-4997-A52D-86781B9BF1F2}"
 EndProject
