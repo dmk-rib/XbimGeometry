@@ -85,9 +85,9 @@ namespace Xbim
 				{
 					Poly::ComputeNormals(mesh); //we need the normals
 					norms = gcnew List<size_t>(mesh->NbNodes());
-					for (Standard_Integer i = 1; i <= mesh->NbNodes() * 3; i += 3) //visit each node
+					for (Standard_Integer i = 0; i < mesh->NbNodes(); ++i) //visit each node
 					{
-						gp_Dir dir(mesh->Normal(i));
+						gp_Dir dir(mesh->Normal(i + 1));
 						if (faceReversed) dir.Reverse();
 						size_t index;
 						dir = quaternion.Multiply(dir);
@@ -237,14 +237,16 @@ namespace Xbim
 				{
 
 					TColStd_Array1OfReal norms(1, (mesh->NbNodes() + 1) * 3);
-					for (Standard_Integer i = 1; i <= mesh->NbNodes() * 3; i += 3) //visit each node
-					{
-						gp_Dir dir(mesh->Normal(i));
+					for (Standard_Integer nodeIndex = 0; nodeIndex < mesh->NbNodes(); ++nodeIndex) //visit each node
+					{						
+						gp_Dir dir(mesh->Normal(nodeIndex + 1));
+						const Standard_Integer normIndex = 1 + nodeIndex * 3;
+
 						if (faceReversed) dir.Reverse();
 						dir = quaternion.Multiply(dir);
-						norms.SetValue(i, dir.X());
-						norms.SetValue(i + 1, dir.Y());
-						norms.SetValue(i + 2, dir.Z());
+						norms.SetValue(normIndex, dir.X());
+						norms.SetValue(normIndex + 1, dir.Y());
+						norms.SetValue(normIndex + 2, dir.Z());
 					}
 					Dictionary<XbimPoint3DWithTolerance^, int>^ uniquePointsOnFace = gcnew Dictionary<XbimPoint3DWithTolerance^, int>(mesh->NbNodes());
 					for (Standard_Integer j = 1; j <= mesh->NbNodes(); j++) //visit each node for vertices
@@ -290,7 +292,7 @@ namespace Xbim
 						Standard_Real py = p.Y();
 						Standard_Real pz = p.Z();
 						transform.Transforms(px, py, pz); //transform the point to the right location
-						gp_Dir dir(mesh->Normal(j * 3));
+						gp_Dir dir(mesh->Normal(j + 1));
 						if (faceReversed) dir.Reverse();
 						dir = quaternion.Multiply(dir); //rotate the norm to the new location
 						meshReceiver->AddNode(faceId, px, py, pz, dir.X(), dir.Y(), dir.Z()); //add the node to the face
@@ -427,14 +429,15 @@ namespace Xbim
 					{
 						Poly::ComputeNormals(mesh); //we need the normals
 						norms = gcnew List<XbimPackedNormal>(mesh->NbNodes());
-						for (Standard_Integer i = 1; i <= mesh->NbNodes() * 3; i += 3) //visit each node
+						for (Standard_Integer i = 0; i < mesh->NbNodes(); ++i) //visit each node
 						{
-							gp_Dir dir(mesh->Normal(i));
+							gp_Dir dir(mesh->Normal(i + 1));
 							if (faceReversed) dir.Reverse();
 
 							dir = quaternion.Multiply(dir);
 							XbimPackedNormal packedNormal = XbimPackedNormal(dir.X(), dir.Y(), dir.Z());
 							norms->Add(packedNormal);
+
 						}
 						normalLookup->Add(norms);
 					}
